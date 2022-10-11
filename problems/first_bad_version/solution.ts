@@ -6,13 +6,12 @@
  */
 
 var solution = function(isBadVersion: any) {
-
     return function(n: number): number {
         let left = 1
         let right = n
         
-        while(left< right){
-            const mid = Math.floor(left+(right - left)/2)
+        while (left< right){
+            const mid = Math.floor(left+(right - left)/ 2 )
             if(isBadVersion(mid)){
                 right = mid
             } else{
