@@ -1,11 +1,11 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
-        Map<Character, Character> sToT = new HashMap();
-        Map<Character, Character> tToS = new HashMap();
+        var sToT = new HashMap<Character, Character>();
+        var tToS = new HashMap<Character, Character>();
 
         for(int i = 0; i < s.length() ; i ++){
-            char c1 = s.charAt(i);
-            char c2 = t.charAt(i);
+            var c1 = s.charAt(i);
+            var c2 = t.charAt(i);
             
             // No mapping exists
             if(!sToT.containsKey(c1)){
