@@ -4,21 +4,24 @@ class Solution {
         //Store all edges in 'graph'.
         Map<Integer, List<Integer>> graph = new HashMap<>();
         
+        for(int i = 0; i < n; i++){
+            graph.put(i, new ArrayList<Integer>());
+        }
         // Compute adjacency list
         for (int[] edge : edges) {
             int a = edge[0], b = edge[1];
-            graph.computeIfAbsent(a, val -> new ArrayList<Integer>()).add(b);
-            graph.computeIfAbsent(b, val -> new ArrayList<Integer>()).add(a);
+            graph.get(a).add(b);
+            graph.get(b).add(a);
         }
        
         // Store all the nodes to be visited in 'queue'.
         boolean[] seen = new boolean[n];
         Deque<Integer> queue = new ArrayDeque();
 
-        queue.addLast(source);
+        queue.offer(source);
         seen[source] = true;
         while (!queue.isEmpty()) {
-            int currNode = queue.removeFirst();
+            int currNode = queue.poll();
             
             if (currNode == destination) {
                 return true;
@@ -27,7 +30,7 @@ class Solution {
             for (int nextNode: graph.get(currNode)){
                 if(!seen[nextNode]){
                     seen[nextNode] = true;
-                    queue.addLast(nextNode);
+                    queue.offer(nextNode);
                 }
             }
         }
