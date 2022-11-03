@@ -1,30 +1,49 @@
 class Solution {
     public int numIslands(char[][] grid) {
-        if (grid == null || grid.length == 0) {
-            return 0;
-        }
-
+        Set<String> visited = new HashSet();
         int numIslands = 0;
-        
-        for (int r = 0; r < grid.length; ++r) {
-          for (int c = 0; c < grid[0].length; ++c) {
-            if (grid[r][c] == '1') {
-              numIslands++;
-              dfs(grid, r, c);
+        for (int i = 0; i < grid.length; i++){
+            for (int j = 0; j < grid[0].length; j++) {
+                String current = generateKey(i,j);
+                if (!visited.contains(current) && grid[i][j] == '1'){
+                    System.out.println("Visiting " + generateKey(i,j));
+                    numIslands += 1;
+                    dfs(i, j, visited, grid);
+                }
             }
-          }
         }
-        return numIslands; 
+        System.out.println(visited);
+        return numIslands;
     }
     
-    private void dfs(char[][] grid, int i, int j) {
-        if (i < 0 || j < 0 || i >= grid.length || j >= grid[0].length || grid[i][j] == '0') {
+    public void dfs(int x, int y, Set<String> visited, char[][] grid) {
+        // Out of bound checks
+        if (x < 0 || x >= grid.length) {
             return;
         }
-        grid[i][j] = '0';
-        dfs(grid, i + 1, j);
-        dfs(grid, i - 1, j);
-        dfs(grid, i, j + 1);
-        dfs(grid, i, j - 1);
+        if (y < 0 || y >= grid[0].length) {
+            return;
+        }
+        
+        String current = generateKey(x,y);
+        
+        if (visited.contains(current)) {
+            return;
+        }
+        if (grid[x][y] == '0'){
+            return;
+        }
+        System.out.println("Visiting " + generateKey(x,y));
+        visited.add(current);
+        // DFS in all 4 directions
+        
+        dfs(x + 1, y, visited, grid);
+        dfs(x - 1, y, visited, grid);
+        dfs(x, y+1, visited, grid);
+        dfs(x, y-1, visited, grid);
+    }
+    
+    public String generateKey(int x, int y){
+        return String.format("%d,%d", x, y);
     }
 }
