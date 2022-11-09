@@ -17,24 +17,22 @@ class Solution {
                 System.out.println("[" + up + ","+ i + "]");
             }
             
-            // Traverse downwards.
             System.out.println("Traverse downwards.");
             for (int i = up + 1; i <= down; i++) {
                 result.add(matrix[i][right]);
                 System.out.println("[" + i + ","+ right + "]");
 
             }
-            // Make sure we are now on a different row.
+            
             System.out.println("up " + up + " down " + down);
             if (up != down) {
                 System.out.println("Traverse from right to left.");
-                // Traverse from right to left.
                 for (int col = right - 1; col >= left; col--) {
                     result.add(matrix[down][col]);
                     System.out.println("[" + down + ","+ col + "]");
                 }
             }
-            // Make sure we are now on a different column.
+
             System.out.println("left " + left + " right " + right);
             if (left != right) {
                 System.out.println("Traverse upwards.");
