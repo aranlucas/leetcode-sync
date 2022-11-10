@@ -10,7 +10,7 @@ class Solution {
             char[] ca = s.toCharArray();
             Arrays.sort(ca);
             String key = String.valueOf(ca);
-            if(!ans.containsKey(key)){
+            if (!ans.containsKey(key)){
                 ans.put(key, new ArrayList());
             }
             ans.get(key).add(s);
