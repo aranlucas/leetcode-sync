@@ -19,7 +19,7 @@ class Solution {
             return null;
         }
         
-        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        Deque<TreeNode> queue = new ArrayDeque<TreeNode>();
         
         queue.add(root);
 
