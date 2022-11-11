@@ -34,11 +34,11 @@ class Solution {
         
         levels.get(level).add(node.val);
         
-        if(node.left != null){
-            helper(node.left, level +1, levels);
+        if (node.left != null){
+            helper(node.left, level + 1, levels);
         }
-        if(node.right != null){
-            helper(node.right, level+1, levels);
+        if (node.right != null){
+            helper(node.right, level + 1, levels);
         }
     }
 }
