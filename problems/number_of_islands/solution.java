@@ -1,49 +1,39 @@
 class Solution {
     public int numIslands(char[][] grid) {
-        Set<String> visited = new HashSet();
+        
         int numIslands = 0;
-        for (int i = 0; i < grid.length; i++){
+        
+        boolean[][] visited = new boolean[grid.length][grid[0].length];
+        for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                String current = generateKey(i,j);
-                if (!visited.contains(current) && grid[i][j] == '1'){
-                    System.out.println("Visiting " + generateKey(i,j));
-                    numIslands += 1;
-                    dfs(i, j, visited, grid);
-                }
+                    if (!visited[i][j] && grid[i][j] == '1'){
+                        numIslands += dfs(grid, i, j, visited);
+                    }
             }
         }
-        System.out.println(visited);
         return numIslands;
     }
     
-    public void dfs(int x, int y, Set<String> visited, char[][] grid) {
-        // Out of bound checks
-        if (x < 0 || x >= grid.length) {
-            return;
-        }
-        if (y < 0 || y >= grid[0].length) {
-            return;
+    public int dfs(char[][] grid, int r, int c, boolean[][] visited) {
+        if (r < 0 || r >= grid.length) {
+            return 0;
         }
         
-        String current = generateKey(x,y);
-        
-        if (visited.contains(current)) {
-            return;
+        if (c < 0 || c >= grid[0].length) {
+            return 0;
         }
-        if (grid[x][y] == '0'){
-            return;
-        }
-        System.out.println("Visiting " + generateKey(x,y));
-        visited.add(current);
-        // DFS in all 4 directions
         
-        dfs(x + 1, y, visited, grid);
-        dfs(x - 1, y, visited, grid);
-        dfs(x, y+1, visited, grid);
-        dfs(x, y-1, visited, grid);
-    }
-    
-    public String generateKey(int x, int y){
-        return String.format("%d,%d", x, y);
+        if (visited[r][c]) {
+            return 0;
+        }
+        if (grid[r][c] == '0'){
+            return 0;
+        }
+        visited[r][c] = true;
+        dfs(grid, r+1, c,visited);
+        dfs(grid, r-1, c,visited);
+        dfs(grid, r, c+1,visited);
+        dfs(grid, r, c-1, visited);
+        return 1;
     }
 }
