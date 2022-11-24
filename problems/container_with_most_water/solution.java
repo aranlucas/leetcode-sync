@@ -10,7 +10,7 @@ class Solution {
             int currentArea = width * length;
             maxArea = Math.max(currentArea, maxArea);
             
-            if (height[left] > height[right]){
+            if (height[left] > height[right]) {
                 right--;
             } else {
                 left++;
