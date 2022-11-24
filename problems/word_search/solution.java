@@ -1,4 +1,6 @@
 class Solution {
+    private static final int[][] DIRS = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
     public boolean exist(char[][] board, String word) {
         int m = board.length;
         int n = board[0].length;
@@ -19,17 +21,23 @@ class Solution {
         
         int m = board.length;
         int n = board[0].length;
-        if (r < 0 || c < 0 || r >= m || c >= n || board[r][c] != word.charAt(index)) {
+        if (r < 0 || c < 0 || r >= m || c >= n) {
             return false;
         }
         
+        // Candidates are up down left right
+        // Prune candidates that are not the next word
         if (board[r][c] == word.charAt(index)) {
-            // mark the path before the next exploration
-            boolean ret = false;
+            // Add valid candidate
             board[r][c] = '#';
-            // Candidates are up down left right
-            ret = backtrack(r+1, c, board, word, index + 1)|| backtrack(r-1, c, board, word, index + 1)|| backtrack(r, c+1, board, word, index + 1) || backtrack(r, c-1, board, word, index + 1);
-            /* Step 4). clean up and return the result. */
+            
+            boolean ret = false;
+            // Explore
+            ret = backtrack(r + 1, c, board, word, index + 1)
+                || backtrack(r - 1, c, board, word, index + 1)
+                || backtrack(r, c + 1, board, word, index + 1) 
+                || backtrack(r, c - 1, board, word, index + 1);
+            // Clean up candidate
             board[r][c] = word.charAt(index);
             return ret;
         }
