@@ -1,30 +1,15 @@
 class Solution {
     public int missingNumber(int[] nums) {
-        int i = 0;
+        int sum = 0;
+        // Total sum using formula
+        int total = nums.length * (nums.length + 1) / 2;
         
-        while (i < nums.length) {
-            int num = nums[i];
-            
-            if (num < nums.length && num != i) {
-                swap(nums, i, num);
-            } else {
-                i++;
-            }
+        // Add all numbers in array
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
         }
         
-        // search for first missing number using linear search
-        for (int index = 0;index < nums.length; index++){
-            if (nums[index]!= index) {
-                return index;
-            }
-        }
-        return nums.length;
-    }
-    
-    private void swap(int arr[], int first, int second){
-        //simple swap algorithm
-        int temp = arr[first];
-        arr[first] = arr[second];
-        arr[second] = temp;
+        // Diference is the missing number
+        return total - sum;
     }
 }
