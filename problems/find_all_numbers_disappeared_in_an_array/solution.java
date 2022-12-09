@@ -9,7 +9,7 @@ class Solution {
             int correctIdx = nums[i] - 1;
             
             // Current num is not in the correct Idx
-            if(nums[i] != nums[correctIdx]){
+            if (nums[i] != nums[correctIdx]){
                 // swap
                 int tmp = nums[i];
                 nums[i] = nums[correctIdx];
