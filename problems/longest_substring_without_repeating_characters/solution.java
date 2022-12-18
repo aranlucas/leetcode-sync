@@ -1,23 +1,24 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-        Map<Character, Integer> windowCount = new HashMap();
-        int longestString = 0;
+        int longestSubstring = 0;
+        
+        Map<Character, Integer> map = new HashMap();
         
         int windowStart = 0;
-        for(int windowEnd = 0; windowEnd < s.length(); windowEnd++){
-            char rightChar = s.charAt(windowEnd);
-            windowCount.put(rightChar, windowCount.getOrDefault(rightChar, 0) + 1);
+        for (int windowEnd = 0; windowEnd < s.length(); windowEnd++) {
+            char c = s.charAt(windowEnd);
             
-            // Check when window needs to shrink. If window is expected to shrink multiple times, use while loop, otherwise if condition
-            while (windowCount.get(rightChar) > 1){
-                char leftChar = s.charAt(windowStart);
-                windowCount.put(leftChar, windowCount.getOrDefault(leftChar, 0) - 1);
-                windowStart++;  
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            
+            while (map.get(c) > 1) {
+                char left = s.charAt(windowStart);
+                map.put(left, map.getOrDefault(left, 0) - 1);
+                windowStart++;
             }
             
-            longestString = Math.max(longestString, windowEnd-windowStart + 1);
+            
+            longestSubstring = Math.max(longestSubstring, windowEnd - windowStart + 1);
         }
-
-        return longestString;
+        return longestSubstring;
     }
 }
