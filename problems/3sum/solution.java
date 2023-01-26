@@ -1,46 +1,30 @@
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        if (nums == null || nums.length < 3) {
-            return Collections.emptyList();
-        }
-
         Arrays.sort(nums);
-        List<List<Integer>> res = new ArrayList<>();
-        for (int i = 0; i < nums.length - 2; i++) {
-            if (nums[i] > 0) {
-                break;
-            }
+        Set<List<Integer>> set = new HashSet<>();
 
-            // Skipping duplicates
-            if (i > 0 && nums[i] == nums[i - 1]) {
-                continue;
-            }
+        for (int i = 0; i < nums.length; i++) {
+            twoSum(nums, i, set);
+        }
 
-            int j = i + 1;
-            int k = nums.length - 1;
-            while (j < k) {
-                // Pruning. Already > 0
-                if (nums[i] + nums[j] > 0) {
-                    break;
-                }
+        List<List<Integer>> result = new ArrayList<>(set);
 
-                // Skipping duplicates
-                if (j > i + 1 && nums[j] == nums[j - 1]) {
-                    j++;
-                    continue;
-                }
+        return result;
+    }
 
-                if (nums[i] + nums[j] + nums[k] < 0) {
-                    j++;
-                } else if (nums[i] + nums[j] + nums[k] > 0) {
-                    k--;
-                } else {
-                    res.add(Arrays.asList(nums[i], nums[j], nums[k]));
-                    j++;
-                    k--;
-                }
+    public void twoSum(int[] nums, int i, Set<List<Integer>> set) {
+        int lo = i + 1, hi = nums.length - 1;
+        while (lo < hi) {
+            int sum = nums[i] + nums[lo] + nums[hi];
+            if (sum < 0) {
+                lo++;
+            } else if (sum > 0) {
+                hi--;
+            } else if (sum == 0) {
+                set.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
+                lo++;
+                hi--;
             }
         }
-        return res;
     }
 }
