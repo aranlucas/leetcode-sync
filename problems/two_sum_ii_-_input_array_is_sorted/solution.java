@@ -1,22 +1,21 @@
 class Solution {
-    public int[] twoSum(int[] numbers, int target) {
+    public int[] twoSum(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
 
-        for (int i = 0; i < numbers.length; i++) {
-            int complement = target - numbers[i];
 
-            System.out.println(complement);
+        while (left < right) {
+            int sum = nums[left] + nums[right];
 
-            int res = Arrays.binarySearch(numbers, complement);
-            System.out.println(res);
-
-            if (res >= 0) {
-                if (i == res) {
-                    return new int[] {i + 1, res + 2};
-                }
-                return new int[] {i + 1, res + 1};
+            if (sum == target) {
+                return new int[] { left + 1, right + 1};
+            } else if (sum > target) {
+                right--;
+            } else {
+                left++;
             }
         }
 
-        return new int[] {0, 0};
+        return new int[] { 0, 0 };
     }
 }
