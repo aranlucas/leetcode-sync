@@ -1,32 +1,26 @@
 class Solution {
-    private static final Map<String, BiFunction<Integer, Integer, Integer>> OPERATIONS =
-            new HashMap<>();
-
-    // Ensure this only gets done once for ALL test cases.
-    static {
-        OPERATIONS.put("+", (a, b) -> a + b);
-        OPERATIONS.put("-", (a, b) -> a - b);
-        OPERATIONS.put("*", (a, b) -> a * b);
-        OPERATIONS.put("/", (a, b) -> a / b);
-    }
-
     public int evalRPN(String[] tokens) {
-        Deque<Integer> stack = new ArrayDeque<Integer>();
+        Stack<Integer> stack = new Stack<>();
 
-        for (int i = 0; i < tokens.length; i++) {
-            String token = tokens[i];
+        Map<String, BiFunction<Integer, Integer, Integer>> operation = new HashMap<>();
+        operation.put("+", (a, b) -> a + b);
+        operation.put("-", (a, b)-> a - b);
+        operation.put("*", (a, b)-> a * b);
+        operation.put("/", (a, b)-> a / b);
 
-            if (!OPERATIONS.containsKey(token)) {
-                stack.push(Integer.valueOf(token));
-                continue;
+        for (String c : tokens) {
+            // Do operation
+            if (operation.containsKey(c)) {
+                var func = operation.get(c);
+                int a = stack.pop();
+                int b = stack.pop();
+                int result = func.apply(b, a);
+                stack.push(result);
+            } else {
+                stack.add(Integer.parseInt(c));
             }
-
-            int number2 = stack.pop();
-            int number1 = stack.pop();
-            BiFunction<Integer, Integer, Integer> operation = OPERATIONS.get(token);
-            int result = operation.apply(number1, number2);
-            stack.push(result);
         }
+
 
         return stack.pop();
     }
