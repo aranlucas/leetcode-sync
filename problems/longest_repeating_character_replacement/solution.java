@@ -1,27 +1,24 @@
 class Solution {
     public int characterReplacement(String s, int k) {
+        Map<Character, Integer> map = new HashMap<>();
+        
+        int left = 0;
+        int answer = 0;
+        int maxFreq = 0;
+        for (int right = 0; right < s.length(); right++) {
+            char r = s.charAt(right);
+            map.put(r, map.getOrDefault(r, 0) + 1);
+            maxFreq = Math.max(map.get(r), maxFreq);
 
-        Map<Character, Integer> windowCount = new HashMap();
-
-        int longestRepeating = 0;
-
-        int max = 0;
-        int windowStart = 0;
-        for (int windowEnd = 0; windowEnd < s.length(); windowEnd++) {
-            char r = s.charAt(windowEnd);
-            windowCount.put(r, windowCount.getOrDefault(r, 0) + 1);
-
-            max = Math.max(max, windowCount.get(r));
-            int lettersToChange = (windowEnd - windowStart + 1) - max;
-            if (lettersToChange > k) {
-                char l = s.charAt(windowStart);
-                windowCount.put(l, windowCount.getOrDefault(l, 0) - 1);
-                windowStart++;
+            while (right - left + 1 - maxFreq > k) {
+                char l = s.charAt(left);
+                map.put(l, map.getOrDefault(l, 0) - 1);
+                left++;
             }
 
-            longestRepeating = Math.max(longestRepeating, windowEnd - windowStart + 1);
+            answer = Math.max(answer, right - left + 1);
         }
 
-        return longestRepeating;
+        return answer;
     }
 }
