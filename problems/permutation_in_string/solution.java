@@ -5,6 +5,7 @@ class Solution {
         for (char c : s1.toCharArray()) {
             s1Count.put(c, s1Count.getOrDefault(c, 0) + 1);
         }
+        
         Map<Character, Integer> windowCount = new HashMap<>();
 
         int left = 0;
