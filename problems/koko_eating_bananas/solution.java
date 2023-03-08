@@ -6,7 +6,7 @@ class Solution {
         int hi = piles[piles.length - 1];
 
         while (lo <= hi) {
-            int mid = (lo + hi) / 2;
+            int mid = (lo + hi) /2;
             if (canEatAllBananas(piles, h, mid)) {
                 hi = mid - 1;
             } else {
@@ -17,7 +17,7 @@ class Solution {
         return lo;
     }
 
-    public boolean canEatAllBananas(int[] piles, int maxHours, int k) {
+    public boolean canEatAllBananas(int [] piles, int maxHours, int k) {
         int hours = 0;
 
         for (int i = 0; i < piles.length; i++) {
