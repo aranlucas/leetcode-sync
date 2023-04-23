@@ -1,26 +1,28 @@
 class Solution {
+    record Pair(int row, int col){};
+
     public void setZeroes(int[][] matrix) {
+        Deque<Pair> q = new ArrayDeque<>();
 
-        Set<Integer> zeroColumn = new HashSet();
-        Set<Integer> zeroRow = new HashSet();
-
-        // Find all the zero's
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {
-                    zeroRow.add(i);
-                    zeroColumn.add(j);
-                    System.out.println(i + "," + j);
+                    Pair start = new Pair(i, j);
+                    q.add(start);
                 }
             }
         }
 
-        // Find all the zero's
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                if (zeroRow.contains(i) || zeroColumn.contains(j)) {
-                    matrix[i][j] = 0;
-                }
+        while (!q.isEmpty()) {
+            Pair cur = q.removeFirst();
+            matrix[cur.row][cur.col] = 0;
+
+            for (int row = 0; row < matrix.length; row++) {
+                matrix[row][cur.col] = 0;
+            }
+            
+            for (int col = 0; col < matrix[0].length; col++) {
+                matrix[cur.row][col] = 0;
             }
         }
     }
