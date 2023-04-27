@@ -1,33 +1,46 @@
 /**
- * Definition for a binary tree node. public class TreeNode { int val; TreeNode left; TreeNode
- * right; TreeNode() {} TreeNode(int val) { this.val = val; } TreeNode(int val, TreeNode left,
- * TreeNode right) { this.val = val; this.left = left; this.right = right; } }
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> levels = new ArrayList<List<Integer>>();
-
         if (root == null) {
-            return levels;
+            return new ArrayList<>();
+        }
+        List<List<Integer>> answer = new ArrayList<>();
+
+        Deque<TreeNode> q = new LinkedList<>();
+
+        q.addLast(root);
+
+        while (!q.isEmpty()) {
+            int size = q.size();
+            List<Integer> level = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode cur = q.removeFirst();
+                level.add(cur.val);
+                if (cur.left != null) {
+                    q.add(cur.left);
+                }
+
+                if (cur.right != null) {
+                    q.add(cur.right);
+                } 
+            }
+            answer.add(level);
         }
 
-        helper(root, 0, levels);
-
-        return levels;
-    }
-
-    public void helper(TreeNode node, int level, List<List<Integer>> levels) {
-        if (levels.size() == level) {
-            levels.add(new ArrayList<Integer>());
-        }
-
-        levels.get(level).add(node.val);
-
-        if (node.left != null) {
-            helper(node.left, level + 1, levels);
-        }
-        if (node.right != null) {
-            helper(node.right, level + 1, levels);
-        }
+        return answer;
     }
 }
