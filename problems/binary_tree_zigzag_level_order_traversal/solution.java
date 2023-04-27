@@ -18,42 +18,37 @@ class Solution {
         if (root == null) {
             return new ArrayList<>();
         }
+        
+        Deque<TreeNode> q = new LinkedList<>();
 
-        List<List<Integer>> list = new ArrayList<>();
+        List<List<Integer>> answer = new ArrayList<>();
 
-        Queue<TreeNode> q = new LinkedList<>();
+        q.addLast(root);
 
-        q.offer(root);
-
-        boolean isReversed = true;
+        boolean zig = false;
 
         while (!q.isEmpty()) {
-            ArrayList<Integer> innerList = new ArrayList<>();
-
             int size = q.size();
+            ArrayList<Integer> level = new ArrayList<>();
 
-            while (size > 0) {
-                TreeNode current = q.poll();
-                if (current.left != null) {
-                    q.offer(current.left);
+            for (int i = 0; i < size; i++) {
+                TreeNode cur = q.removeFirst();
+                level.add(cur.val);
+                if (cur.left != null) {
+                    q.addLast(cur.left);
                 }
-
-                if (current.right != null) {
-                    q.offer(current.right);
+                if (cur.right != null) {
+                    q.addLast(cur.right);
                 }
-
-                innerList.add(current.val);
-                size--;
             }
 
-            if (!isReversed) {
-                Collections.reverse(innerList);
+            if (zig) {
+                Collections.reverse(level);
             }
-
-            list.add(innerList);
-
-            isReversed = !isReversed;
+            answer.add(level);
+            zig = !zig;
+ 
         }
-        return list;
+        return answer;
     }
 }
