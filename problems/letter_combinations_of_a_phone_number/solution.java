@@ -1,36 +1,39 @@
 class Solution {
-    private Map<Character, String> digitToChar =
-            Map.of(
-                    '2', "abc", '3', "def", '4', "ghi", '5', "jkl", '6', "mno", '7', "pqrs", '8',
-                    "tuv", '9', "wxyz");
+    Map<Character, List<Character>> charToLetter = new HashMap<>();
 
     public List<String> letterCombinations(String digits) {
-        List<String> result = new ArrayList();
-        // If the input is empty, immediately return an empty answer array
         if (digits.length() == 0) {
-            return result;
+            return new ArrayList<>();
         }
+        charToLetter.put('1', new ArrayList<>());
+        charToLetter.put('2', List.of('a','b', 'c'));
+        charToLetter.put('3', List.of('d','e', 'f'));
+        charToLetter.put('4', List.of('g','h', 'i'));
+        charToLetter.put('5', List.of('j','k', 'l'));
+        charToLetter.put('6', List.of('m','n', 'o'));
+        charToLetter.put('7', List.of('p','q', 'r', 's'));
+        charToLetter.put('8', List.of('t','u', 'v'));
+        charToLetter.put('9', List.of('w','x', 'y', 'z'));
+        charToLetter.put('0', new ArrayList<>());
 
-        StringBuilder current = new StringBuilder();
-        backtrack(0, digits, current, result);
-
-        return result;
+        List<String> answer = new ArrayList<>();
+        StringBuilder curr = new StringBuilder();
+        backtrack(0, answer, digits, curr);
+        return answer;
     }
 
-    public void backtrack(int start, String digits, StringBuilder current, List<String> result) {
-        if (current.length() == digits.length()) {
-            result.add(current.toString());
+    private void backtrack(int index, List<String> answer, String digits, StringBuilder curr) {
+        // Are we done?
+        if (index >= digits.length()) {
+            answer.add(curr.toString());
             return;
         }
 
-        // Add current candidates - All letters in map associated with number
-        String possibleLetters = digitToChar.get(digits.charAt(start));
-        for (char c : possibleLetters.toCharArray()) {
-            // Add current candidate
-            current.append(c);
-            backtrack(start + 1, digits, current, result);
-            // Remove current candidate
-            current.deleteCharAt(current.length() - 1);
+        // What are the candidates?
+        for (char candidate : charToLetter.get(digits.charAt(index))) {
+            curr.append(candidate);
+            backtrack(index + 1, answer, digits, curr);
+            curr.deleteCharAt(curr.length() - 1);
         }
     }
 }
