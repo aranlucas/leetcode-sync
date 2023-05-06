@@ -18,7 +18,7 @@ class Solution {
         if (head == null) {
             return null;
         }
-        Map<Node, Node> map = new HashMap<>();
+        Map<Node,Node> map = new HashMap<>();
 
         Node curr = head;
         while (curr != null) {
