@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v3
       - uses: axel-op/googlejavaformat-action@v3
         with:
-          args: "--replace -a"
+          args: "--replace -a --skip-javadoc-formatting"
