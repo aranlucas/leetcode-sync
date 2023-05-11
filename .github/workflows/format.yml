@@ -3,7 +3,7 @@ name: Format
   workflow_dispatch: null
   push:
     branches:
-      - master
+      - main
 jobs:
   formatting:
     runs-on: ubuntu-latest
