@@ -1,57 +1,57 @@
 public class TrieNode {
-  public boolean isWord = false;
-  public TrieNode[] nodes = new TrieNode[26];
+    public boolean isWord = false;
+    public TrieNode[] nodes = new TrieNode[26];
 }
 
 class Trie {
-  TrieNode root;
+    TrieNode root;
 
-  public Trie() {
-    this.root = new TrieNode();
-  }
-
-  public void insert(String word) {
-
-    TrieNode cur = root;
-
-    for (int i = 0; i < word.length(); i++) {
-      char c = word.charAt(i);
-      int index = c - 'a';
-      if (cur.nodes[index] == null) {
-        cur.nodes[index] = new TrieNode();
-      }
-      cur = cur.nodes[index];
+    public Trie() {
+        this.root = new TrieNode();
     }
-    cur.isWord = true;
-  }
 
-  public boolean search(String word) {
-    TrieNode cur = root;
+    public void insert(String word) {
 
-    for (int i = 0; i < word.length(); i++) {
-      char c = word.charAt(i);
-      int index = c - 'a';
-      if (cur.nodes[index] == null) {
-        return false;
-      }
-      cur = cur.nodes[index];
+        TrieNode cur = root;
+
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            int index = c - 'a';
+            if (cur.nodes[index] == null) {
+                cur.nodes[index] = new TrieNode();
+            }
+            cur = cur.nodes[index];
+        }
+        cur.isWord = true;
     }
-    return cur.isWord;
-  }
 
-  public boolean startsWith(String prefix) {
-    TrieNode cur = root;
+    public boolean search(String word) {
+        TrieNode cur = root;
 
-    for (int i = 0; i < prefix.length(); i++) {
-      char c = prefix.charAt(i);
-      int index = c - 'a';
-      if (cur.nodes[index] == null) {
-        return false;
-      }
-      cur = cur.nodes[index];
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            int index = c - 'a';
+            if (cur.nodes[index] == null) {
+                return false;
+            }
+            cur = cur.nodes[index];
+        }
+        return cur.isWord;
     }
-    return true;
-  }
+
+    public boolean startsWith(String prefix) {
+        TrieNode cur = root;
+
+        for (int i = 0; i < prefix.length(); i++) {
+            char c = prefix.charAt(i);
+            int index = c - 'a';
+            if (cur.nodes[index] == null) {
+                return false;
+            }
+            cur = cur.nodes[index];
+        }
+        return true;
+    }
 }
 
 /**

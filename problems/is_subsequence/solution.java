@@ -1,20 +1,20 @@
 class Solution {
-  public boolean isSubsequence(String s, String t) {
-    int leftBound = s.length();
-    int rightBound = t.length();
+    public boolean isSubsequence(String s, String t) {
+        int leftBound = s.length();
+        int rightBound = t.length();
 
-    int pLeft = 0;
-    int pRight = 0;
+        int pLeft = 0;
+        int pRight = 0;
 
-    while (pLeft < leftBound && pRight < rightBound) {
+        while (pLeft < leftBound && pRight < rightBound) {
 
-      if (s.charAt(pLeft) == t.charAt(pRight)) {
-        pLeft += 1;
-      }
+            if (s.charAt(pLeft) == t.charAt(pRight)) {
+                pLeft += 1;
+            }
 
-      pRight += 1;
+            pRight += 1;
+        }
+
+        return pLeft == leftBound;
     }
-
-    return pLeft == leftBound;
-  }
 }

@@ -4,29 +4,29 @@
  * TreeNode right) { this.val = val; this.left = left; this.right = right; } }
  */
 class Solution {
-  int sum = 0;
+    int sum = 0;
 
-  public int rangeSumBST(TreeNode root, int low, int high) {
-    sum = 0;
-    helper(root, low, high);
-    return sum;
-  }
-
-  public void helper(TreeNode root, int low, int high) {
-    if (root == null) {
-      return;
+    public int rangeSumBST(TreeNode root, int low, int high) {
+        sum = 0;
+        helper(root, low, high);
+        return sum;
     }
 
-    if (low <= root.val && root.val <= high) {
-      sum += root.val;
-    }
+    public void helper(TreeNode root, int low, int high) {
+        if (root == null) {
+            return;
+        }
 
-    if (low < root.val) {
-      helper(root.left, low, high);
-    }
+        if (low <= root.val && root.val <= high) {
+            sum += root.val;
+        }
 
-    if (high > root.val) {
-      helper(root.right, low, high);
+        if (low < root.val) {
+            helper(root.left, low, high);
+        }
+
+        if (high > root.val) {
+            helper(root.right, low, high);
+        }
     }
-  }
 }

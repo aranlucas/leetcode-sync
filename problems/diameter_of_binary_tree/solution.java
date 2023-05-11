@@ -5,26 +5,26 @@
  */
 class Solution {
 
-  private int diameter;
+    private int diameter;
 
-  public int diameterOfBinaryTree(TreeNode root) {
+    public int diameterOfBinaryTree(TreeNode root) {
 
-    diameter = 0;
+        diameter = 0;
 
-    longestPath(root);
-    return diameter;
-  }
-
-  private int longestPath(TreeNode node) {
-    if (node == null) {
-      return 0;
+        longestPath(root);
+        return diameter;
     }
 
-    int leftPath = longestPath(node.left);
-    int rightPath = longestPath(node.right);
+    private int longestPath(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
 
-    diameter = Math.max(diameter, leftPath + rightPath);
+        int leftPath = longestPath(node.left);
+        int rightPath = longestPath(node.right);
 
-    return Math.max(leftPath, rightPath) + 1;
-  }
+        diameter = Math.max(diameter, leftPath + rightPath);
+
+        return Math.max(leftPath, rightPath) + 1;
+    }
 }

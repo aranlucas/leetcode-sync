@@ -5,20 +5,20 @@
  */
 class Solution {
 
-  public List<Integer> inorderTraversal(TreeNode root) {
-    List<Integer> answer = new ArrayList<>();
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> answer = new ArrayList<>();
 
-    traverse(root, answer);
+        traverse(root, answer);
 
-    return answer;
-  }
-
-  private void traverse(TreeNode root, List<Integer> answer) {
-    if (root == null) {
-      return;
+        return answer;
     }
-    traverse(root.left, answer);
-    answer.add(root.val);
-    traverse(root.right, answer);
-  }
+
+    private void traverse(TreeNode root, List<Integer> answer) {
+        if (root == null) {
+            return;
+        }
+        traverse(root.left, answer);
+        answer.add(root.val);
+        traverse(root.right, answer);
+    }
 }

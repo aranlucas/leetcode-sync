@@ -4,22 +4,22 @@
  * TreeNode right) { this.val = val; this.left = left; this.right = right; } }
  */
 class Solution {
-  public List<Integer> inorder(TreeNode root, List<Integer> result) {
-    if (root == null) {
-      return result;
+    public List<Integer> inorder(TreeNode root, List<Integer> result) {
+        if (root == null) {
+            return result;
+        }
+        inorder(root.left, result);
+
+        result.add(root.val);
+
+        inorder(root.right, result);
+
+        return result;
     }
-    inorder(root.left, result);
 
-    result.add(root.val);
+    public int kthSmallest(TreeNode root, int k) {
+        List<Integer> nums = inorder(root, new ArrayList<Integer>());
 
-    inorder(root.right, result);
-
-    return result;
-  }
-
-  public int kthSmallest(TreeNode root, int k) {
-    List<Integer> nums = inorder(root, new ArrayList<Integer>());
-
-    return nums.get(k - 1);
-  }
+        return nums.get(k - 1);
+    }
 }

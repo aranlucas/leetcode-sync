@@ -4,26 +4,26 @@
  * TreeNode right) { this.val = val; this.left = left; this.right = right; } }
  */
 class Solution {
-  public boolean isBalanced(TreeNode root) {
-    if (root == null) {
-      return true;
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+
+        if (Math.abs(leftHeight - rightHeight) > 1) {
+            return false;
+        }
+
+        return isBalanced(root.left) && isBalanced(root.right);
     }
 
-    int leftHeight = height(root.left);
-    int rightHeight = height(root.right);
+    private int height(TreeNode root) {
+        if (root == null) {
+            return -1;
+        }
 
-    if (Math.abs(leftHeight - rightHeight) > 1) {
-      return false;
+        return 1 + Math.max(height(root.left), height(root.right));
     }
-
-    return isBalanced(root.left) && isBalanced(root.right);
-  }
-
-  private int height(TreeNode root) {
-    if (root == null) {
-      return -1;
-    }
-
-    return 1 + Math.max(height(root.left), height(root.right));
-  }
 }
