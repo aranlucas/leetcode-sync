@@ -10,7 +10,6 @@ class Solution {
             }
         }
         return count;
-        
     }
 
     public void dfs(int x, int y, char[][] grid) {
@@ -20,7 +19,7 @@ class Solution {
         grid[x][y] = '0';
 
         dfs(x + 1, y, grid);
-        dfs(x , y + 1, grid);
+        dfs(x, y + 1, grid);
         dfs(x - 1, y, grid);
         dfs(x, y - 1, grid);
     }

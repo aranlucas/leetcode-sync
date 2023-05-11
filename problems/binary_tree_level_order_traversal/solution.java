@@ -36,7 +36,7 @@ class Solution {
 
                 if (cur.right != null) {
                     q.add(cur.right);
-                } 
+                }
             }
             answer.add(level);
         }

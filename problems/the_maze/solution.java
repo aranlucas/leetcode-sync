@@ -1,6 +1,7 @@
 class Solution {
-    
+
     int[][] DIRS = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+
     public boolean hasPath(int[][] maze, int[] start, int[] destination) {
         boolean[][] visited = new boolean[maze.length][maze[0].length];
 
@@ -8,7 +9,7 @@ class Solution {
 
         q.addLast(start);
 
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             int[] curr = q.removeFirst();
 
             if (curr[0] == destination[0] && curr[1] == destination[1]) {
@@ -19,7 +20,11 @@ class Solution {
                 int dx = curr[0] + dir[0];
                 int dy = curr[1] + dir[1];
 
-                while (dx >= 0 && dy >= 0 && dx < maze.length && dy < maze[0].length && maze[dx][dy] == 0) {
+                while (dx >= 0
+                        && dy >= 0
+                        && dx < maze.length
+                        && dy < maze[0].length
+                        && maze[dx][dy] == 0) {
                     dx += dir[0];
                     dy += dir[1];
                 }

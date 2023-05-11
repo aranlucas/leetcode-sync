@@ -6,7 +6,8 @@ class Solution {
 
         if (words.length != pattern.length()) {
             return false;
-        };
+        }
+        ;
 
         for (int i = 0; i < pattern.length(); i++) {
 
@@ -27,7 +28,4 @@ class Solution {
 
         return true;
     }
-
 }
-
-

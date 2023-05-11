@@ -5,11 +5,14 @@ class Solution {
         for (int i = 1; i <= n; i++) {
             for (int coins = 0; coins <= k; coins++) {
                 int currentSum = 0;
-                for (int currentCoins = 0; currentCoins <= Math.min(piles.get(i - 1).size(), coins); currentCoins++) {
+                for (int currentCoins = 0;
+                        currentCoins <= Math.min(piles.get(i - 1).size(), coins);
+                        currentCoins++) {
                     if (currentCoins > 0) {
                         currentSum += piles.get(i - 1).get(currentCoins - 1);
                     }
-                    dp[i][coins] = Math.max(dp[i][coins], dp[i - 1][coins - currentCoins] + currentSum);
+                    dp[i][coins] =
+                            Math.max(dp[i][coins], dp[i - 1][coins - currentCoins] + currentSum);
                 }
             }
         }

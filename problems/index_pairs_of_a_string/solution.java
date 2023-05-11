@@ -7,7 +7,7 @@ class Solution {
         for (int i = 0; i < text.length(); i++) {
             for (int j = i; j < text.length(); j++) {
                 if (wordsSet.contains(text.substring(i, j + 1))) {
-                    result.add(new int[] { i , j});
+                    result.add(new int[] {i, j});
                 }
             }
         }

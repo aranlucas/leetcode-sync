@@ -20,7 +20,13 @@ class Solution {
         return answer == Integer.MAX_VALUE ? -1 : answer;
     }
 
-    private int dfs(int node, String colors, Map<Integer, List<Integer>> adj, int[][] count, boolean[] visit, boolean[] inStack) {
+    private int dfs(
+            int node,
+            String colors,
+            Map<Integer, List<Integer>> adj,
+            int[][] count,
+            boolean[] visit,
+            boolean[] inStack) {
         if (inStack[node]) {
             return Integer.MAX_VALUE;
         }
@@ -33,7 +39,7 @@ class Solution {
         inStack[node] = true;
 
         if (adj.containsKey(node)) {
-            for (int neighbor: adj.get(node)) {
+            for (int neighbor : adj.get(node)) {
                 if (dfs(neighbor, colors, adj, count, visit, inStack) == Integer.MAX_VALUE) {
                     return Integer.MAX_VALUE;
                 }
@@ -43,7 +49,7 @@ class Solution {
             }
         }
 
-        count[node][colors.charAt(node) - 'a']++;        
+        count[node][colors.charAt(node) - 'a']++;
         // Remove the node from the stack.
         inStack[node] = false;
         return count[node][colors.charAt(node) - 'a'];

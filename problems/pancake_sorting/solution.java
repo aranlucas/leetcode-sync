@@ -11,6 +11,7 @@ class Solution {
         }
         return result;
     }
+
     private int find(int[] arr, int target) {
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] == target) {
@@ -19,7 +20,7 @@ class Solution {
         }
         return -1;
     }
-    
+
     private void flip(int[] arr, int index) {
         int i = 0, j = index;
         while (i < j) {

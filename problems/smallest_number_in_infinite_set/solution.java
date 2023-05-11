@@ -8,17 +8,17 @@ class SmallestInfiniteSet {
         pq = new PriorityQueue<>();
         currentInteger = 1;
     }
-    
+
     public int popSmallest() {
         if (!pq.isEmpty()) {
             int smallest = pq.poll();
             set.remove(smallest);
             return smallest;
         }
-    
+
         return currentInteger++;
     }
-    
+
     public void addBack(int num) {
         if (currentInteger <= num || set.contains(num)) {
             return;

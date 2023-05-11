@@ -2,7 +2,7 @@ class Solution {
     public String reverseWords(String s) {
         int left = 0;
         int right = s.length() - 1;
-        
+
         while (left <= right && s.charAt(left) == ' ') left++;
         while (left <= right && s.charAt(right) == ' ') right--;
 
@@ -14,7 +14,7 @@ class Solution {
             char c = s.charAt(left);
             if (c != ' ') {
                 word.append(c);
-            } else if ((word.length() != 0) && (c == ' ') ){
+            } else if ((word.length() != 0) && (c == ' ')) {
                 d.push(word.toString());
                 word.setLength(0);
             }

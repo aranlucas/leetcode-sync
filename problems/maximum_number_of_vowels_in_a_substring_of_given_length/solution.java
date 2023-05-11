@@ -2,7 +2,6 @@ class Solution {
     public int maxVowels(String s, int k) {
         Set<Character> vowels = Set.of('a', 'e', 'i', 'o', 'u');
 
-
         int l = 0;
 
         int answer = 0;

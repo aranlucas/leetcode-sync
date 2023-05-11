@@ -18,7 +18,7 @@ class Solution {
         if (root == null) {
             return new ArrayList<>();
         }
-        
+
         Deque<TreeNode> q = new LinkedList<>();
 
         List<List<Integer>> answer = new ArrayList<>();
@@ -47,7 +47,6 @@ class Solution {
             }
             answer.add(level);
             zig = !zig;
- 
         }
         return answer;
     }

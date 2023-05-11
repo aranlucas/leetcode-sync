@@ -4,7 +4,7 @@ class Logger {
     public Logger() {
         map = new HashMap<>();
     }
-    
+
     public boolean shouldPrintMessage(int timestamp, String message) {
         if (map.containsKey(message)) {
             if (timestamp - map.get(message) >= 10) {

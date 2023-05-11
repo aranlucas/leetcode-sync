@@ -25,11 +25,11 @@ class Solution {
         if (!isValidBST(root.left)) {
             return false;
         }
-    
+
         if (prev != null && prev >= root.val) {
             return false;
         }
-        
+
         prev = root.val;
 
         return isValidBST(root.right);

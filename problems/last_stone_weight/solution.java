@@ -1,9 +1,9 @@
 class Solution {
     public int lastStoneWeight(int[] stones) {
-        
+
         PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.reverseOrder());
 
-        for (int stone: stones) {
+        for (int stone : stones) {
             heap.add(stone);
         }
 

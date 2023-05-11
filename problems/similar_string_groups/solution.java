@@ -5,7 +5,7 @@ class Solution {
             return;
         }
 
-        for (int neighbor: adj.get(node)) {
+        for (int neighbor : adj.get(node)) {
             if (!visit[neighbor]) {
                 visit[neighbor] = true;
                 dfs(neighbor, adj, visit);

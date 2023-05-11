@@ -1,16 +1,16 @@
 class Solution {
     int[][] DIRS = {
-      {2, 1},
-      {2, -1},
-      {-2, 1},
-      {-2, -1},
-      {1, 2},
-      {1, -2},
-      {-1, 2},
-      {-1, -2},
+        {2, 1},
+        {2, -1},
+        {-2, 1},
+        {-2, -1},
+        {1, 2},
+        {1, -2},
+        {-1, 2},
+        {-1, -2},
     };
-    
-    record Pair(int x, int y){}
+
+    record Pair(int x, int y) {}
 
     public int minKnightMoves(int x, int y) {
         Deque<Pair> q = new ArrayDeque<>();
@@ -21,7 +21,7 @@ class Solution {
         int level = 0;
         while (!q.isEmpty()) {
             int size = q.size();
-            for (int i = 0 ; i < size; i++) {
+            for (int i = 0; i < size; i++) {
                 Pair cur = q.removeFirst();
 
                 if (cur.x == x && cur.y == y) {
@@ -37,7 +37,6 @@ class Solution {
                         visited[dx + 302][dy + 302] = true;
                         q.addLast(neigh);
                     }
-
                 }
             }
             level++;

@@ -18,7 +18,7 @@ class Solution {
         dp[i][j] %= mod;
         return dp[i][j];
     }
-    
+
     public int numWays(String[] words, String target) {
         int m = target.length(), k = words[0].length();
         cnt = new int[alphabet][k];
@@ -31,6 +31,6 @@ class Solution {
         for (int i = 0; i <= m; i++) {
             Arrays.fill(dp[i], -1);
         }
-        return (int)f(target, m, k);
+        return (int) f(target, m, k);
     }
 }

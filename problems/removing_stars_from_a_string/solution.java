@@ -1,6 +1,6 @@
 class Solution {
     public String removeStars(String s) {
-        
+
         StringBuilder answer = new StringBuilder();
 
         for (int i = 0; i < s.length(); i++) {

@@ -15,10 +15,11 @@
  */
 class Solution {
 
-    record Pair(TreeNode node, int index){};
+    record Pair(TreeNode node, int index) {}
+    ;
 
     public int widthOfBinaryTree(TreeNode root) {
-        if (root == null){
+        if (root == null) {
             return 0;
         }
 

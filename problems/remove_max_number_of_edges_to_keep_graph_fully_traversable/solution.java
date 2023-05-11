@@ -1,4 +1,3 @@
-
 class UnionFind {
     private int[] group;
     private int[] rank;
@@ -21,7 +20,7 @@ class UnionFind {
     public boolean join(int node1, int node2) {
         int group1 = find(node1);
         int group2 = find(node2);
-        
+
         // node1 and node2 already belong to same group.
         if (group1 == group2) {
             return false;
@@ -38,20 +37,21 @@ class UnionFind {
 
         return true;
     }
-    
+
     public boolean areConnected(int node1, int node2) {
         int group1 = find(node1);
         int group2 = find(node2);
         return group1 == group2;
     }
-};
+}
+;
 
 class Solution {
     public int maxNumEdgesToRemove(int n, int[][] edges) {
         Arrays.sort(edges, (a, b) -> Integer.compare(b[0], a[0]));
-        UnionFind ufAlice = new UnionFind(n+1);
-        UnionFind ufBob = new UnionFind(n+1);
-        
+        UnionFind ufAlice = new UnionFind(n + 1);
+        UnionFind ufBob = new UnionFind(n + 1);
+
         int removedEdges = 0, aliceEdges = 0, bobEdges = 0;
         for (int[] edge : edges) {
             if (edge[0] == 3) {
@@ -76,8 +76,7 @@ class Solution {
                 }
             }
         }
-        
+
         return (bobEdges == n - 1 && aliceEdges == n - 1) ? removedEdges : -1;
- 
     }
 }

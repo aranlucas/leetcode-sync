@@ -16,7 +16,7 @@ class Solution {
         // 2 letter substring
         for (int i = 0; i < n - 1; i++) {
             if (s.charAt(i) == s.charAt(i + 1)) {
-                dp[i][ i+ 1] = true;
+                dp[i][i + 1] = true;
             }
             ans += (dp[i][i + 1] ? 1 : 0);
         }
@@ -27,11 +27,11 @@ class Solution {
             for (int i = 0; i + len < n; i++) {
                 int j = i + len; // end index
                 if (s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1]) {
-                     dp[i][j] = true;
-                     ans++;
+                    dp[i][j] = true;
+                    ans++;
                 }
             }
         }
         return ans;
-     }
+    }
 }

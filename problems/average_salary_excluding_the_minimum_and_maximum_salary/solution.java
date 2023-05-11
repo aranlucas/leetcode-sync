@@ -4,7 +4,7 @@ class Solution {
         double min = Integer.MAX_VALUE;
         double sum = 0;
 
-        for (int s: salary) {
+        for (int s : salary) {
             max = Math.max(max, s);
             min = Math.min(min, s);
             sum += s;

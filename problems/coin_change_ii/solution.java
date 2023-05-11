@@ -4,7 +4,7 @@ class Solution {
 
         dp[0] = 1;
 
-        for (int coin: coins) {
+        for (int coin : coins) {
             for (int x = coin; x < amount + 1; x++) {
                 dp[x] += dp[x - coin];
             }

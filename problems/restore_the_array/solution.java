@@ -1,5 +1,6 @@
 class Solution {
     int mod = (int) 1e9 + 7;
+
     public int numberOfArrays(String s, int k) {
         int m = s.length();
         int[] dp = new int[m + 1];

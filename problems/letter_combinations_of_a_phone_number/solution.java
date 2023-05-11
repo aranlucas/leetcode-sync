@@ -6,14 +6,14 @@ class Solution {
             return new ArrayList<>();
         }
         charToLetter.put('1', new ArrayList<>());
-        charToLetter.put('2', List.of('a','b', 'c'));
-        charToLetter.put('3', List.of('d','e', 'f'));
-        charToLetter.put('4', List.of('g','h', 'i'));
-        charToLetter.put('5', List.of('j','k', 'l'));
-        charToLetter.put('6', List.of('m','n', 'o'));
-        charToLetter.put('7', List.of('p','q', 'r', 's'));
-        charToLetter.put('8', List.of('t','u', 'v'));
-        charToLetter.put('9', List.of('w','x', 'y', 'z'));
+        charToLetter.put('2', List.of('a', 'b', 'c'));
+        charToLetter.put('3', List.of('d', 'e', 'f'));
+        charToLetter.put('4', List.of('g', 'h', 'i'));
+        charToLetter.put('5', List.of('j', 'k', 'l'));
+        charToLetter.put('6', List.of('m', 'n', 'o'));
+        charToLetter.put('7', List.of('p', 'q', 'r', 's'));
+        charToLetter.put('8', List.of('t', 'u', 'v'));
+        charToLetter.put('9', List.of('w', 'x', 'y', 'z'));
         charToLetter.put('0', new ArrayList<>());
 
         List<String> answer = new ArrayList<>();

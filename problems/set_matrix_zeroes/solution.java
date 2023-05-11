@@ -1,5 +1,6 @@
 class Solution {
-    record Pair(int row, int col){};
+    record Pair(int row, int col) {}
+    ;
 
     public void setZeroes(int[][] matrix) {
         Deque<Pair> q = new ArrayDeque<>();
@@ -20,7 +21,7 @@ class Solution {
             for (int row = 0; row < matrix.length; row++) {
                 matrix[row][cur.col] = 0;
             }
-            
+
             for (int col = 0; col < matrix[0].length; col++) {
                 matrix[cur.row][col] = 0;
             }

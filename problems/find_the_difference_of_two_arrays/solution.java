@@ -19,7 +19,7 @@ class Solution {
             }
         }
 
-        for (int num: nums2) {
+        for (int num : nums2) {
             if (!set1.contains(num)) {
                 answer2.add(num);
             }

@@ -28,27 +28,26 @@ class Solution {
                 count++;
             }
             right--;
-            
-                // col changes
-                // [bottom][right]
-                // [2, 2]
-                // [2, 1]
-                // [2, 0]
-                for (int col = right; col >= left; col--) {
-                    answer[bottom][col] = count;
-                    count++;
-                }
-            
+
+            // col changes
+            // [bottom][right]
+            // [2, 2]
+            // [2, 1]
+            // [2, 0]
+            for (int col = right; col >= left; col--) {
+                answer[bottom][col] = count;
+                count++;
+            }
+
             bottom--;
-                for (int row = bottom; row > top; row--) {
-                    answer[row][left] = count;
-                    count++;
-                }
-            
+            for (int row = bottom; row > top; row--) {
+                answer[row][left] = count;
+                count++;
+            }
+
             top++;
             left++;
         }
         return answer;
     }
-
 }

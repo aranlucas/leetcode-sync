@@ -20,7 +20,7 @@ class UnionFind {
     public void join(int node1, int node2) {
         int group1 = find(node1);
         int group2 = find(node2);
-        
+
         // node1 and node2 already belong to same group.
         if (group1 == group2) {
             return;
@@ -35,13 +35,14 @@ class UnionFind {
             rank[group2] += 1;
         }
     }
-    
+
     public boolean areConnected(int node1, int node2) {
         int group1 = find(node1);
         int group2 = find(node2);
         return group1 == group2;
     }
-};
+}
+;
 
 class Solution {
     public boolean[] distanceLimitedPathsExist(int n, int[][] edgeList, int[][] queries) {
@@ -66,7 +67,7 @@ class Solution {
             int q = queriesWithIndex[i][1];
             int limit = queriesWithIndex[i][2];
             int index = queriesWithIndex[i][3];
-            
+
             while (edgesIndex < edgeList.length && edgeList[edgesIndex][2] < limit) {
                 int node1 = edgeList[edgesIndex][0];
                 int node2 = edgeList[edgesIndex][1];

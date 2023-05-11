@@ -7,7 +7,7 @@ class Node {
     public Node next;
 
     public Node() {}
-    
+
     public Node(int _val) {
         val = _val;
     }
@@ -31,13 +31,13 @@ class Solution {
 
         q.addLast(root);
 
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             int size = q.size();
             Node prev = null;
             for (int i = 0; i < size; i++) {
                 Node cur = q.removeFirst();
 
-                if (prev != null ) {
+                if (prev != null) {
                     prev.next = cur;
                 }
                 if (cur.left != null) {

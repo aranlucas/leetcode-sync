@@ -2,7 +2,6 @@ class Solution {
     public boolean canReach(int[] arr, int start) {
         Map<Integer, List<Integer>> adj = new HashMap<>();
 
-
         for (int i = 0; i < arr.length; i++) {
             adj.put(i, new ArrayList<>());
         }
@@ -26,9 +25,9 @@ class Solution {
         if (arr[start] == 0) {
             return true;
         }
-        for (int neighbor: adj.get(start)) {
+        for (int neighbor : adj.get(start)) {
             if (!visited[neighbor]) {
-                if (dfs(neighbor, adj, visited, arr)){
+                if (dfs(neighbor, adj, visited, arr)) {
                     return true;
                 }
             }

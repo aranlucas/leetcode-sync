@@ -1,9 +1,9 @@
 class Solution {
-    Map<Character, Character> p = Map.of(
-        '}', '{',
-        ']', '[',
-        ')', '('
-    );
+    Map<Character, Character> p =
+            Map.of(
+                    '}', '{',
+                    ']', '[',
+                    ')', '(');
 
     public boolean isValid(String s) {
         Deque<Character> stack = new ArrayDeque<>();

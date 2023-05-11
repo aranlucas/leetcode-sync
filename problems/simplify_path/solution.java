@@ -33,6 +33,6 @@ class Solution {
             result.append(dir);
         }
 
-        return result.length() > 0 ? result.toString() : "/" ;
+        return result.length() > 0 ? result.toString() : "/";
     }
 }

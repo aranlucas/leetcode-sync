@@ -28,9 +28,12 @@ class Solution {
 
         for (int j = i; j < jobDifficulty.length - daysRemaining + 1; j++) {
             dailyMaxJobDiff = Math.max(dailyMaxJobDiff, jobDifficulty[j]);
-            res = Math.min(res, dailyMaxJobDiff + solve(j + 1, daysRemaining - 1, jobDifficulty, memo));
+            res =
+                    Math.min(
+                            res,
+                            dailyMaxJobDiff + solve(j + 1, daysRemaining - 1, jobDifficulty, memo));
         }
-        
+
         memo[i][daysRemaining] = res;
         return res;
     }
