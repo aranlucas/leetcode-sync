@@ -14,5 +14,3 @@ jobs:
           github-token: '${{ github.token }}'
           leetcode-csrf-token: '${{ secrets.LEETCODE_CSRF_TOKEN }}'
           leetcode-session: '${{ secrets.LEETCODE_SESSION }}'
-      - name: format
-        uses: axel-op/googlejavaformat-action@v3
