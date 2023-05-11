@@ -1,34 +1,24 @@
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
+ * Definition for a binary tree node. public class TreeNode { int val; TreeNode left; TreeNode
+ * right; TreeNode() {} TreeNode(int val) { this.val = val; } TreeNode(int val, TreeNode left,
+ * TreeNode right) { this.val = val; this.left = left; this.right = right; } }
  */
 class Solution {
 
-    public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> answer = new ArrayList<>();
+  public List<Integer> inorderTraversal(TreeNode root) {
+    List<Integer> answer = new ArrayList<>();
 
-        traverse(root, answer);
+    traverse(root, answer);
 
-        return answer;
+    return answer;
+  }
+
+  private void traverse(TreeNode root, List<Integer> answer) {
+    if (root == null) {
+      return;
     }
-
-    private void traverse(TreeNode root, List<Integer> answer) {
-        if (root == null) {
-            return;
-        }
-        traverse(root.left, answer);
-        answer.add(root.val);
-        traverse(root.right, answer);
-    }
+    traverse(root.left, answer);
+    answer.add(root.val);
+    traverse(root.right, answer);
+  }
 }

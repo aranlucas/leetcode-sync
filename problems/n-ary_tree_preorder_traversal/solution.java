@@ -18,23 +18,23 @@ class Node {
 */
 
 class Solution {
-    public List<Integer> preorder(Node root) {
-        List<Integer> result = new ArrayList<>();
+  public List<Integer> preorder(Node root) {
+    List<Integer> result = new ArrayList<>();
 
-        traversePreOrder(root, result);
-        return result;
+    traversePreOrder(root, result);
+    return result;
+  }
+
+  private void traversePreOrder(Node root, List<Integer> result) {
+
+    if (root == null) {
+      return;
     }
-    
-    private void traversePreOrder(Node root, List<Integer> result) {
-        
-        if(root == null){
-            return;
-        }
-        
-        result.add(root.val);
-        
-        for (Node child: root.children){
-            traversePreOrder(child,result);
-        }
+
+    result.add(root.val);
+
+    for (Node child : root.children) {
+      traversePreOrder(child, result);
     }
+  }
 }

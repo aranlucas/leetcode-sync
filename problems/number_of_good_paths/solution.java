@@ -1,86 +1,84 @@
 class UnionFind {
-    int[] parent;
-    int[] rank;
+  int[] parent;
+  int[] rank;
 
-    public UnionFind(int size) {
-        parent = new int[size];
-        for (int i = 0; i < size; i++)
-            parent[i] = i;
-        rank = new int[size];
-    }
+  public UnionFind(int size) {
+    parent = new int[size];
+    for (int i = 0; i < size; i++) parent[i] = i;
+    rank = new int[size];
+  }
 
-    public int find(int x) {
-        if (parent[x] != x)
-            parent[x] = find(parent[x]);
-        return parent[x];
-    }
+  public int find(int x) {
+    if (parent[x] != x) parent[x] = find(parent[x]);
+    return parent[x];
+  }
 
-    public void union(int x, int y) {
-        int xset = find(x), yset = find(y);
-        if (xset == yset) {
-            return;
-        } else if (rank[xset] < rank[yset]) {
-            parent[xset] = yset;
-        } else if (rank[xset] > rank[yset]) {
-            parent[yset] = xset;
-        } else {
-            parent[yset] = xset;
-            rank[xset]++;
-        }
+  public void union(int x, int y) {
+    int xset = find(x), yset = find(y);
+    if (xset == yset) {
+      return;
+    } else if (rank[xset] < rank[yset]) {
+      parent[xset] = yset;
+    } else if (rank[xset] > rank[yset]) {
+      parent[yset] = xset;
+    } else {
+      parent[yset] = xset;
+      rank[xset]++;
     }
+  }
 }
 
 class Solution {
-    public int numberOfGoodPaths(int[] vals, int[][] edges) {
-        Map<Integer, List<Integer>> adj = new HashMap<>();
-        int n = vals.length;
+  public int numberOfGoodPaths(int[] vals, int[][] edges) {
+    Map<Integer, List<Integer>> adj = new HashMap<>();
+    int n = vals.length;
 
-        for (int i = 0; i < n; i++) {
-            adj.put(i, new ArrayList<Integer>());
-        }
-
-        for (int[] edge : edges) {
-            int a = edge[0], b = edge[1];
-            adj.get(a).add(b);
-            adj.get(b).add(a);
-        }
-
-        // Mapping from value to all the nodes having the same value in sorted order of
-        // values.
-        TreeMap<Integer, List<Integer>> valuesToNodes = new TreeMap<>();
-        for (int i = 0; i < n; i++) {
-            valuesToNodes.computeIfAbsent(vals[i], value -> new ArrayList<Integer>()).add(i);
-        }
-
-        UnionFind uf = new UnionFind(n);
-        int goodPaths = 0;
-
-        for (int value : valuesToNodes.keySet()) {
-            for (int node : valuesToNodes.get(value)) {
-                if (!adj.containsKey(node)) {
-                    continue;
-                }
-
-                for (int neighbor: adj.get(node)) {
-                    if (vals[node] >= vals[neighbor]) {
-                        uf.union(node, neighbor);
-                    }
-                }
-            }
-            
-            Map<Integer, Integer> group = new HashMap<>();
-            for (int u : valuesToNodes.get(value)) {
-                int parentU = uf.find(u);
-                group.put(parentU, group.getOrDefault(parentU, 0) + 1);
-            }
-            
-            // For each set of "size", add size * (size + 1) / 2 to the number of goodPaths.
-            for (int key : group.keySet()) {
-                int size = group.get(key);
-                goodPaths += size * (size + 1) / 2;
-            }
-        }
-
-        return goodPaths;
+    for (int i = 0; i < n; i++) {
+      adj.put(i, new ArrayList<Integer>());
     }
+
+    for (int[] edge : edges) {
+      int a = edge[0], b = edge[1];
+      adj.get(a).add(b);
+      adj.get(b).add(a);
+    }
+
+    // Mapping from value to all the nodes having the same value in sorted order of
+    // values.
+    TreeMap<Integer, List<Integer>> valuesToNodes = new TreeMap<>();
+    for (int i = 0; i < n; i++) {
+      valuesToNodes.computeIfAbsent(vals[i], value -> new ArrayList<Integer>()).add(i);
+    }
+
+    UnionFind uf = new UnionFind(n);
+    int goodPaths = 0;
+
+    for (int value : valuesToNodes.keySet()) {
+      for (int node : valuesToNodes.get(value)) {
+        if (!adj.containsKey(node)) {
+          continue;
+        }
+
+        for (int neighbor : adj.get(node)) {
+          if (vals[node] >= vals[neighbor]) {
+            uf.union(node, neighbor);
+          }
+        }
+      }
+
+      Map<Integer, Integer> group = new HashMap<>();
+      for (int u : valuesToNodes.get(value)) {
+        int parentU = uf.find(u);
+        group.put(parentU, group.getOrDefault(parentU, 0) + 1);
+      }
+
+      // For each set of "size", add size * (size + 1) / 2 to the number of goodPaths.
+      for (int key : group.keySet()) {
+        int size = group.get(key);
+        goodPaths += size * (size + 1) / 2;
+      }
+    }
+
+    return goodPaths;
+  }
 }
