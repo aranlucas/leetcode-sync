@@ -1,7 +1,7 @@
 class Solution {
     public int characterReplacement(String s, int k) {
         Map<Character, Integer> map = new HashMap<>();
-        
+
         int left = 0;
         int answer = 0;
         int maxFreq = 0;

@@ -21,11 +21,14 @@ class Solution {
                     }
                 }
                 // Valid names are only from distinct suffixes in both groups.
-                // Since we can swap a with b and swap b with a to create two valid names, multiple answer by 2.
-                distinctNames += 2 * (initialGroup[i].size() - numOfMutual) * (initialGroup[j].size() - numOfMutual);
+                // Since we can swap a with b and swap b with a to create two valid names, multiple
+                // answer by 2.
+                distinctNames +=
+                        2
+                                * (initialGroup[i].size() - numOfMutual)
+                                * (initialGroup[j].size() - numOfMutual);
             }
         }
-        
 
         return distinctNames;
     }

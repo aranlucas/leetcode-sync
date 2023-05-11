@@ -15,7 +15,7 @@ class Solution {
             return;
         }
 
-        char[] candidates = new char[] { '(', ')'};
+        char[] candidates = new char[] {'(', ')'};
 
         for (char c : candidates) {
             curr.append(c);
@@ -23,7 +23,7 @@ class Solution {
             curr.deleteCharAt(curr.length() - 1);
         }
     }
-    
+
     public boolean isValid(String s) {
         Map<Character, Character> p = new HashMap<>();
         p.put('}', '{');
@@ -32,11 +32,12 @@ class Solution {
 
         Stack<Character> stack = new Stack<>();
 
-        for(char c : s.toCharArray()) {
+        for (char c : s.toCharArray()) {
             if (p.containsKey(c)) {
                 // Get the top element of the stack. If the stack is empty, set a dummy value of '#'
-                char topElement = stack.isEmpty() ? '#' : stack.pop();   
-                // If the mapping for this bracket doesn't match the stack's top element, return false.
+                char topElement = stack.isEmpty() ? '#' : stack.pop();
+                // If the mapping for this bracket doesn't match the stack's top element, return
+                // false.
                 if (topElement != p.get(c)) {
                     return false;
                 }

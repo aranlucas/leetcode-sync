@@ -7,11 +7,11 @@ class Solution {
         }
 
         int longestConsecutive = 0;
-        for (int num: set) {
+        for (int num : set) {
             if (!set.contains(num - 1)) {
                 int currentNum = num;
                 int consecutive = 1;
-                while (set.contains(currentNum + 1)){
+                while (set.contains(currentNum + 1)) {
                     consecutive++;
                     currentNum = currentNum + 1;
                 }

@@ -6,8 +6,8 @@ class Solution {
 
         List<Integer> ans = new ArrayList<>();
 
-        while(--i >=0 || cur > 0) {
-            if (i >= 0){
+        while (--i >= 0 || cur > 0) {
+            if (i >= 0) {
                 cur += num[i];
             }
             ans.add(cur % 10);

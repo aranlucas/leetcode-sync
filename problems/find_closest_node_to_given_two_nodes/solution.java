@@ -21,7 +21,6 @@ class Solution {
                 dist[neighbor] = 1 + dist[node];
                 q.offer(neighbor);
             }
-
         }
     }
 

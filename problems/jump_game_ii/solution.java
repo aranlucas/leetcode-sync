@@ -5,7 +5,7 @@ class Solution {
         int n = nums.length;
         int curEnd = 0;
         int curFar = 0;
-        
+
         for (int i = 0; i < n - 1; ++i) {
             // Update the farthest reachable index of this jump.
             curFar = Math.max(curFar, i + nums[i]);
@@ -17,7 +17,7 @@ class Solution {
                 curEnd = curFar;
             }
         }
-        
+
         return answer;
     }
 }

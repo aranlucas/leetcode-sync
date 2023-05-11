@@ -41,7 +41,7 @@ class Solution {
 
         return prev;
     }
-    
+
     private void mergeLists(ListNode first, ListNode second) {
         ListNode tmp = null;
         while (second.next != null) {

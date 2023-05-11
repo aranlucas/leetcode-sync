@@ -14,7 +14,7 @@ class Solution {
             while (index < n) {
                 answer.append(s.charAt(index));
                 // Not first or last row
-                if (row !=0 && row != numRows -1) {
+                if (row != 0 && row != numRows - 1) {
                     int charsInBetween = charsInSection - 2 * row;
                     int secondIndex = index + charsInBetween;
                     if (secondIndex < n) {

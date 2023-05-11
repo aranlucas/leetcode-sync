@@ -17,6 +17,7 @@ class Solution {
         cache.put(num, Math.max(choose, noChoose));
         return cache.get(num);
     }
+
     public int deleteAndEarn(int[] nums) {
         int maxNumber = 0;
         HashMap<Integer, Integer> points = new HashMap<>();

@@ -27,7 +27,7 @@ class Solution {
     public boolean feasible(int[] weights, int c, int days) {
         int daysNeeded = 1;
         int currentLoad = 0;
-        for (int weight: weights) {
+        for (int weight : weights) {
             currentLoad += weight;
 
             if (currentLoad > c) {

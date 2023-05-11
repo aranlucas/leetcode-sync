@@ -21,17 +21,17 @@ class UnionFind {
             return false;
         }
         if (rootA != rootB) {
-            for (int i = 0; i < root.length; i++){
+            for (int i = 0; i < root.length; i++) {
                 // Replace all of rootB with rootA;
                 if (root[i] == rootB) {
                     root[i] = rootA;
                 }
             }
         }
-        
+
         return true;
     }
-    
+
     public boolean connected(int a, int b) {
         return find(a) == find(b);
     }

@@ -4,14 +4,12 @@ class UnionFind {
 
     public UnionFind(int size) {
         parent = new int[size];
-        for (int i = 0; i < size; i++)
-            parent[i] = i;
+        for (int i = 0; i < size; i++) parent[i] = i;
         rank = new int[size];
     }
 
     public int find(int x) {
-        if (parent[x] != x)
-            parent[x] = find(parent[x]);
+        if (parent[x] != x) parent[x] = find(parent[x]);
         return parent[x];
     }
 
@@ -32,7 +30,7 @@ class UnionFind {
 
 class Solution {
     public int minScore(int n, int[][] roads) {
-        
+
         UnionFind uf = new UnionFind(n + 1);
 
         for (int[] road : roads) {

@@ -24,12 +24,11 @@ class Solution {
             tail = tail.next;
         }
 
-        if (list1 == null)  {
+        if (list1 == null) {
             tail.next = list2;
         } else {
             tail.next = list1;
         }
-
 
         return dummy.next;
     }

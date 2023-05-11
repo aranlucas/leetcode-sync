@@ -4,7 +4,7 @@ class Solution {
         Stack<Integer> stack = new Stack<Integer>();
         int operand = 0;
         int result = 0; // For the on-going result
-        int sign = 1;  // 1 means positive, -1 means negative
+        int sign = 1; // 1 means positive, -1 means negative
 
         for (char ch : s.toCharArray()) {
             if (Character.isDigit(ch)) {

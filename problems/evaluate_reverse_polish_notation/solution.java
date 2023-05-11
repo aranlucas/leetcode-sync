@@ -4,9 +4,9 @@ class Solution {
 
         Map<String, BiFunction<Integer, Integer, Integer>> operation = new HashMap<>();
         operation.put("+", (a, b) -> a + b);
-        operation.put("-", (a, b)-> a - b);
-        operation.put("*", (a, b)-> a * b);
-        operation.put("/", (a, b)-> a / b);
+        operation.put("-", (a, b) -> a - b);
+        operation.put("*", (a, b) -> a * b);
+        operation.put("/", (a, b) -> a / b);
 
         for (String c : tokens) {
             // Do operation
@@ -20,7 +20,6 @@ class Solution {
                 stack.add(Integer.parseInt(c));
             }
         }
-
 
         return stack.pop();
     }

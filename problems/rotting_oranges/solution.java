@@ -8,16 +8,16 @@ class Solution {
         for (int r = 0; r < grid.length; r++) {
             for (int c = 0; c < grid[0].length; c++) {
                 if (grid[r][c] == 2) {
-                    q.offer(new int[]{ r, c });
+                    q.offer(new int[] {r, c});
                 } else if (grid[r][c] == 1) {
                     freshOranges++;
                 }
             }
         }
 
-        int[][] directions = { {-1, 0}, {0, 1}, {1, 0}, {0, -1}};
+        int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
-        q.offer(new int[]{ -1, -1 });
+        q.offer(new int[] {-1, -1});
         int minutesElapsed = -1;
 
         while (!q.isEmpty()) {
@@ -29,7 +29,7 @@ class Solution {
                 minutesElapsed++;
                 // to avoid the endless loop
                 if (!q.isEmpty()) {
-                    q.offer(new int[]{ -1, -1 });
+                    q.offer(new int[] {-1, -1});
                 }
             } else {
                 // From the current land cell, traverse to all the four directions
@@ -45,7 +45,7 @@ class Solution {
                             grid[x][y] = 2;
                             freshOranges--;
                             // this orange would then contaminate other oranges
-                            q.offer(new int[] { x, y });
+                            q.offer(new int[] {x, y});
                         }
                     }
                 }

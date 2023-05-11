@@ -1,6 +1,6 @@
 class Solution {
     // Four directions: Up, Down, Left and Right.
-    int[][] direction = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+    int[][] direction = new int[][] {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
     public int maxDistance(int[][] grid) {
         // A copy matrix of the grid to mark water cells as land once visited.
@@ -13,7 +13,7 @@ class Solution {
                 // Copy grid to the visited matrix.
                 visited[i][j] = grid[i][j];
                 if (grid[i][j] == 1) {
-                    q.offer(new int[] { i, j });
+                    q.offer(new int[] {i, j});
                 }
             }
         }
@@ -33,15 +33,19 @@ class Solution {
                     int x = landCell[0] + dir[0];
                     int y = landCell[1] + dir[1];
 
-                    if (x >= 0 && y >= 0 && x < grid.length && y < grid[0].length && visited[x][y] == 0) {
+                    if (x >= 0
+                            && y >= 0
+                            && x < grid.length
+                            && y < grid[0].length
+                            && visited[x][y] == 0) {
                         // Marking as 1 to avoid re-iterating it.
                         visited[x][y] = 1;
-                        q.offer(new int[]{ x, y });
+                        q.offer(new int[] {x, y});
                     }
                 }
             }
 
-            // After each iteration of queue elements, increment distance 
+            // After each iteration of queue elements, increment distance
             // as we covered 1 unit distance from all cells in every direction.
             distance++;
         }

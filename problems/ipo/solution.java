@@ -7,7 +7,6 @@ class Solution {
             pqCapital.add(new int[] {capital[i], profits[i]});
         }
 
-
         for (int i = 0; i < k; i++) {
             while (!pqCapital.isEmpty() && pqCapital.peek()[0] <= w) {
                 pqProfit.add(pqCapital.poll());

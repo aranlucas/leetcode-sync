@@ -18,7 +18,7 @@ class Solution {
             String curr = q.remove();
             ans.add(curr); // Add to result
             String[] words = curr.split("\\s");
-            
+
             for (int i = 0; i < words.length; i++) {
                 if (graph.get(words[i]) == null) {
                     continue;

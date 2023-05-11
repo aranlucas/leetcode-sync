@@ -4,7 +4,6 @@ class Solution {
 
         Integer[][] memo = new Integer[satisfaction.length + 1][satisfaction.length + 1];
 
-
         return solve(0, 1, satisfaction, memo);
     }
 

@@ -23,7 +23,7 @@ class Solution {
                 break;
             }
         }
-        
+
         if (intersect == null) {
             return null;
         }

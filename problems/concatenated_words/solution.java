@@ -18,6 +18,6 @@ class Solution {
                 answer.add(word);
             }
         }
-        return answer;   
+        return answer;
     }
 }

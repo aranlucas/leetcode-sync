@@ -5,8 +5,11 @@ class Solution {
         int dp[][][] = new int[k][rows][cols];
         for (int row = rows - 1; row >= 0; row--) {
             for (int col = cols - 1; col >= 0; col--) {
-                apples[row][col] = (pizza[row].charAt(col) == 'A' ? 1 : 0) + apples[row + 1][col] + apples[row][col + 1]
-                        - apples[row + 1][col + 1];
+                apples[row][col] =
+                        (pizza[row].charAt(col) == 'A' ? 1 : 0)
+                                + apples[row + 1][col]
+                                + apples[row][col + 1]
+                                - apples[row + 1][col + 1];
                 dp[0][row][col] = apples[row][col] > 0 ? 1 : 0;
             }
         }

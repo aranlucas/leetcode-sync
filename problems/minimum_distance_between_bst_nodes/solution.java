@@ -14,7 +14,7 @@
  * }
  */
 class Solution {
-    public void inorder(TreeNode root, List<Integer> list){
+    public void inorder(TreeNode root, List<Integer> list) {
         if (root == null) {
             return;
         }
@@ -31,7 +31,7 @@ class Solution {
 
         int min = Integer.MAX_VALUE;
         for (int i = 1; i < list.size(); i++) {
-            min = Math.min(min, list.get(i) - list.get(i-1));
+            min = Math.min(min, list.get(i) - list.get(i - 1));
         }
 
         return min;

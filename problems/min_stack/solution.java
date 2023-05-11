@@ -5,25 +5,25 @@ class MinStack {
     public MinStack() {
         this.stack = new Stack<>();
     }
-    
+
     public void push(int val) {
         if (stack.isEmpty()) {
-            stack.push(new int[] { val, val });
+            stack.push(new int[] {val, val});
             return;
         }
-        
+
         int currentMin = getMin();
-        stack.push(new int[] { val, Math.min(val, currentMin)});
+        stack.push(new int[] {val, Math.min(val, currentMin)});
     }
-    
+
     public void pop() {
         stack.pop();
     }
-    
+
     public int top() {
         return stack.peek()[0];
     }
-    
+
     public int getMin() {
         return stack.peek()[1];
     }

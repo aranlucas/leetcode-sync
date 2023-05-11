@@ -1,7 +1,7 @@
 class Solution {
     public String gcdOfStrings(String str1, String str2) {
 
-        for (int i = Math.min(str1.length(), str2.length()); i >= 0 ; i--) {
+        for (int i = Math.min(str1.length(), str2.length()); i >= 0; i--) {
             if (prefix(i, str1, str2)) {
                 return str1.substring(0, i);
             }

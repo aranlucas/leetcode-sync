@@ -9,7 +9,7 @@ class Solution {
             // continue to search on the right.
             if (arr[pivot] - pivot - 1 < k) {
                 left = pivot + 1;
-            // Otherwise, go left.
+                // Otherwise, go left.
             } else {
                 right = pivot - 1;
             }

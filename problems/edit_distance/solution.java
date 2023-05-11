@@ -19,12 +19,12 @@ class Solution {
         int minEditDistance = 0;
         if (word1.charAt(word1Index - 1) == word2.charAt(word2Index - 1)) {
             minEditDistance = minDistanceRecur(word1, word2, word1Index - 1, word2Index - 1);
-        }
-        else {
+        } else {
             int insertOperation = minDistanceRecur(word1, word2, word1Index, word2Index - 1);
             int deleteOperation = minDistanceRecur(word1, word2, word1Index - 1, word2Index);
             int replaceOperation = minDistanceRecur(word1, word2, word1Index - 1, word2Index - 1);
-            minEditDistance = Math.min(insertOperation, Math.min(deleteOperation, replaceOperation)) + 1;
+            minEditDistance =
+                    Math.min(insertOperation, Math.min(deleteOperation, replaceOperation)) + 1;
         }
         memo[word1Index][word2Index] = minEditDistance;
         return minEditDistance;

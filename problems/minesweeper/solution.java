@@ -1,5 +1,7 @@
 class Solution {
-    private static final int[][] DIRS = { { 0, 1 }, { 1, 1 }, { 1, 0 }, { 1, -1 }, { 0, -1 }, { -1, -1 }, { -1, 0 },  { -1, 1 } };
+    private static final int[][] DIRS = {
+        {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}, {-1, 0}, {-1, 1}
+    };
 
     public char[][] updateBoard(char[][] board, int[] click) {
         int x = click[0];

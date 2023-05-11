@@ -26,7 +26,7 @@ class Solution {
 
         return answer;
     }
-    
+
     private boolean areEqual(Map<Character, Integer> first, Map<Character, Integer> second) {
         return first.entrySet().stream().allMatch(e -> e.getValue().equals(second.get(e.getKey())));
     }

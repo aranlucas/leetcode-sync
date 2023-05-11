@@ -5,11 +5,11 @@ class SummaryRanges {
     public SummaryRanges() {
         this.nums = new TreeSet<>();
     }
-    
+
     public void addNum(int value) {
         nums.add(value);
     }
-    
+
     public int[][] getIntervals() {
         if (nums.isEmpty()) {
             return new int[0][2];
@@ -26,14 +26,13 @@ class SummaryRanges {
                 right = value;
             } else {
                 // New interval, start both from value;
-                intervals.add(new int[] { left, right });
+                intervals.add(new int[] {left, right});
                 left = value;
                 right = value;
-            } 
+            }
         }
-        intervals.add(new int[] { left, right });
-        return intervals.toArray(new int[0][]); 
-        
+        intervals.add(new int[] {left, right});
+        return intervals.toArray(new int[0][]);
     }
 }
 

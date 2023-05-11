@@ -2,25 +2,25 @@ class Solution {
     public int[] shortestAlternatingPaths(int n, int[][] redEdges, int[][] blueEdges) {
         Map<Integer, List<List<Integer>>> adj = new HashMap<>();
         for (int[] redEdge : redEdges) {
-            adj.computeIfAbsent(redEdge[0], k -> new ArrayList<List<Integer>>()).add(
-                    Arrays.asList(redEdge[1], 0));
+            adj.computeIfAbsent(redEdge[0], k -> new ArrayList<List<Integer>>())
+                    .add(Arrays.asList(redEdge[1], 0));
         }
 
         for (int[] blueEdge : blueEdges) {
-            adj.computeIfAbsent(blueEdge[0], k -> new ArrayList<List<Integer>>()).add(
-                    Arrays.asList(blueEdge[1], 1));
+            adj.computeIfAbsent(blueEdge[0], k -> new ArrayList<List<Integer>>())
+                    .add(Arrays.asList(blueEdge[1], 1));
         }
         int[] answer = new int[n];
         Arrays.fill(answer, -1);
         boolean[][] visit = new boolean[n][2];
         Queue<int[]> q = new LinkedList<>();
-        
+
         // Start with node 0, with number of steps as 0 and undefined color -1.
-        q.offer(new int[] { 0, 0, -1 });
+        q.offer(new int[] {0, 0, -1});
         answer[0] = 0;
         visit[0][1] = true;
         visit[0][0] = true;
-        
+
         while (!q.isEmpty()) {
             int[] element = q.poll();
             int node = element[0];
@@ -39,7 +39,7 @@ class Solution {
                         answer[neighbor] = 1 + steps;
                     }
                     visit[neighbor][color] = true;
-                    q.offer(new int[] { neighbor, steps + 1, color });
+                    q.offer(new int[] {neighbor, steps + 1, color});
                 }
             }
         }

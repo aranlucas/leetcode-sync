@@ -4,13 +4,12 @@ class Solution {
         List<int[]> teamScorepair = new ArrayList<>();
 
         for (int i = 0; i < scores.length; i++) {
-            teamScorepair.add(new int[] { ages[i], scores[i] });
+            teamScorepair.add(new int[] {ages[i], scores[i]});
         }
 
-
         // Sort in ascending order of age and then by score.
-        Collections.sort(teamScorepair, (a,b) -> a[0] == b[0] ? a[1]-b[1] : a[0]-b[0]);
-        
+        Collections.sort(teamScorepair, (a, b) -> a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]);
+
         // initialize dp table
         int[] memo = new int[scores.length];
         Arrays.fill(memo, -1);

@@ -19,10 +19,11 @@ class Solution {
         for (int right = 0; right < s.length(); right++) {
             char r = s.charAt(right);
             windowCount.put(r, windowCount.getOrDefault(r, 0) + 1);
-            
+
             // If the frequency of the current character added equals to the
             // desired count in t then increment the formed count by 1.
-            if (tCount.containsKey(r) && windowCount.get(r).intValue() == tCount.get(r).intValue()) {
+            if (tCount.containsKey(r)
+                    && windowCount.get(r).intValue() == tCount.get(r).intValue()) {
                 match++;
             }
 
@@ -33,8 +34,9 @@ class Solution {
                 }
                 char l = s.charAt(left);
                 windowCount.put(l, windowCount.getOrDefault(l, 0) - 1);
-                
-                if (tCount.containsKey(l) && windowCount.get(l).intValue() < tCount.get(l).intValue()) {
+
+                if (tCount.containsKey(l)
+                        && windowCount.get(l).intValue() < tCount.get(l).intValue()) {
                     match--;
                 }
                 left++;

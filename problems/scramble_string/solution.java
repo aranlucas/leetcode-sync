@@ -9,11 +9,11 @@ class Solution {
         sb.append(s1);
         sb.append(s2);
         String key = sb.toString();
-        
+
         if (map.containsKey(key)) {
             return map.get(key);
         }
-        
+
         if (s1.equals(s2)) {
             map.put(key, true);
             return true;
@@ -26,7 +26,7 @@ class Solution {
         }
 
         for (int i = 0; i < 26; i++) {
-            if (s1Array[i] != s2Array[i] ) {
+            if (s1Array[i] != s2Array[i]) {
                 map.put(key, false);
                 return false;
             }

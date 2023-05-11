@@ -5,7 +5,7 @@ class LFUCache {
     private Map<Integer, LinkedHashSet<Integer>> frequencies;
     private int minf;
     private int capacity;
-    
+
     private void insert(int key, int frequency, int value) {
         cache.put(key, new Pair<>(frequency, value));
         frequencies.putIfAbsent(frequency, new LinkedHashSet<>());
@@ -18,7 +18,7 @@ class LFUCache {
         minf = 0;
         this.capacity = capacity;
     }
-    
+
     public int get(int key) {
         Pair<Integer, Integer> frequencyAndValue = cache.get(key);
         if (frequencyAndValue == null) {
@@ -31,10 +31,10 @@ class LFUCache {
             ++minf;
         }
         final int value = frequencyAndValue.getValue();
-        insert(key, frequency + 1, value);   
+        insert(key, frequency + 1, value);
         return value;
     }
-    
+
     public void put(int key, int value) {
         if (capacity <= 0) {
             return;

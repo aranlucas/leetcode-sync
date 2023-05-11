@@ -17,7 +17,7 @@ class Solution {
 
             maxArea = Math.max(maxArea, area);
         }
-        
+
         return maxArea;
     }
 }

@@ -4,7 +4,7 @@ class Solution {
         int[] right = new int[n];
         right[0] = 1;
         for (int i = 1; i < n; i++) {
-            right[i] = nums[i -1] * right[i - 1];
+            right[i] = nums[i - 1] * right[i - 1];
         }
 
         int[] left = new int[n];

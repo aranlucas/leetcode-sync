@@ -1,6 +1,6 @@
 class Solution {
     public int minReorder(int n, int[][] connections) {
-        
+
         Map<Integer, List<List<Integer>>> adjList = new HashMap<>();
 
         for (int[] edge : connections) {

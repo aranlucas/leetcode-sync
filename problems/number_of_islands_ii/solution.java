@@ -6,14 +6,12 @@ class UnionFind {
     public UnionFind(int size) {
         parent = new int[size];
         rank = new int[size];
-        for (int i = 0; i < size; i++)
-            parent[i] = -1;
+        for (int i = 0; i < size; i++) parent[i] = -1;
         count = 0;
     }
 
     public void addLand(int x) {
-        if (parent[x] >= 0)
-            return;
+        if (parent[x] >= 0) return;
         parent[x] = x;
         count++;
     }
@@ -31,8 +29,7 @@ class UnionFind {
     }
 
     public int find(int x) {
-        if (parent[x] != x)
-            parent[x] = find(parent[x]);
+        if (parent[x] != x) parent[x] = find(parent[x]);
         return parent[x];
     }
 
@@ -54,8 +51,8 @@ class UnionFind {
 
 class Solution {
     public List<Integer> numIslands2(int m, int n, int[][] positions) {
-        int x[] = { -1, 1, 0, 0 };
-        int y[] = { 0, 0, -1, 1 };
+        int x[] = {-1, 1, 0, 0};
+        int y[] = {0, 0, -1, 1};
         UnionFind dsu = new UnionFind(m * n);
         List<Integer> answer = new ArrayList<>();
 
@@ -69,8 +66,11 @@ class Solution {
                 int neighborPosition = neighborX * n + neighborY;
                 // If neighborX and neighborY correspond to a point in the grid and there is a
                 // land at that point, then merge it with the current land.
-                if (neighborX >= 0 && neighborX < m && neighborY >= 0 && neighborY < n &&
-                        dsu.isLand(neighborPosition)) {
+                if (neighborX >= 0
+                        && neighborX < m
+                        && neighborY >= 0
+                        && neighborY < n
+                        && dsu.isLand(neighborPosition)) {
                     dsu.union(landPosition, neighborPosition);
                 }
             }

@@ -3,14 +3,13 @@ class Solution {
         int left = 0;
         int right = s.length() - 1;
 
-
         while (left < right) {
-            if (!Character.isLetterOrDigit(s.charAt(left))){
+            if (!Character.isLetterOrDigit(s.charAt(left))) {
                 left++;
                 continue;
             }
-            
-            if (!Character.isLetterOrDigit(s.charAt(right))){
+
+            if (!Character.isLetterOrDigit(s.charAt(right))) {
                 right--;
                 continue;
             }
