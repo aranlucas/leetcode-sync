@@ -4,7 +4,7 @@ class Solution {
         int[] dp = new int[high + 1];
         dp[0] = 1;
         int mod = 1_000_000_007;
-        
+
         // Iterate over each length `end`.
         for (int end = 1; end <= high; ++end) {
             // check if the current string can be made by append zero `0`s or one `1`s.
@@ -16,7 +16,7 @@ class Solution {
             }
             dp[end] %= mod;
         }
-        
+
         // Add up the number of strings with each valid length [low ~ high].
         int answer = 0;
         for (int i = low; i <= high; ++i) {
