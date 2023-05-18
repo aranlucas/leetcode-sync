@@ -8,7 +8,8 @@ async function sleep(millis) {
         }, millis)
     })
 
-    return promise}
+    return promise;
+}
 
 /** 
  * let t = Date.now()
