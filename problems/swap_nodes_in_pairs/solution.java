@@ -25,7 +25,6 @@ class Solution {
             prevNode.next = node2;
             node1.next = node2.next;
             node2.next = node1;
-            
 
             // Reinitializing the head and prevNode for next swap
             prevNode = node1;

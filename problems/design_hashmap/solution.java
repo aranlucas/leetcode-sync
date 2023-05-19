@@ -1,6 +1,6 @@
 class MyHashMap {
     int[] data;
-    
+
     public MyHashMap() {
         data = new int[1000001];
         Arrays.fill(data, -1);
@@ -9,7 +9,7 @@ class MyHashMap {
     public void put(int key, int val) {
         data[key] = val;
     }
-    
+
     public int get(int key) {
         return data[key];
     }

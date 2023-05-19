@@ -1,5 +1,5 @@
 class Solution {
-    record Record (Character name, int[] votes) {}
+    record Record(Character name, int[] votes) {}
 
     public String rankTeams(String[] votes) {
         Map<Character, int[]> map = new HashMap<>();
@@ -20,21 +20,23 @@ class Solution {
                 v[i] += 1;
             }
         }
-        
+
         List<Character> list = new ArrayList<>(map.keySet());
 
-        Collections.sort(list, (a , b) -> {
-            for (int i = 0; i < l; i++){
-                if (map.get(a)[i] != map.get(b)[i]){
-                    return map.get(b)[i] - map.get(a)[i];
-                }
-            }
-            return a - b;
-        });
-        
+        Collections.sort(
+                list,
+                (a, b) -> {
+                    for (int i = 0; i < l; i++) {
+                        if (map.get(a)[i] != map.get(b)[i]) {
+                            return map.get(b)[i] - map.get(a)[i];
+                        }
+                    }
+                    return a - b;
+                });
+
         StringBuilder sb = new StringBuilder();
-        
-        for (char c : list){
+
+        for (char c : list) {
             sb.append(c);
         }
         return sb.toString();
