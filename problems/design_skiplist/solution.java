@@ -3,6 +3,7 @@ class Skiplist {
     class Node {
         int val;
         Node next, down;
+
         public Node(int val, Node next, Node down) {
             this.val = val;
             this.next = next;
@@ -17,7 +18,7 @@ class Skiplist {
         head = new Node(-1, null, null);
         random = new Random();
     }
-    
+
     public boolean search(int target) {
         Node cur = head;
         while (cur != null) {
@@ -32,11 +33,11 @@ class Skiplist {
         }
         return false;
     }
-    
+
     public void add(int num) {
         Stack<Node> stack = new Stack<>();
         Node cur = head;
-        while ( cur != null) {
+        while (cur != null) {
             while (cur.next != null && cur.next.val < num) {
                 cur = cur.next;
             }
@@ -52,17 +53,16 @@ class Skiplist {
             insert = random.nextDouble() < 0.5;
         }
         if (insert) {
-            head = new Node(-1, null , head);
+            head = new Node(-1, null, head);
         }
-        
     }
-    
+
     public boolean erase(int num) {
         Node cur = head;
         boolean found = false;
 
         while (cur != null) {
-            while(cur.next != null && cur.next.val < num) {
+            while (cur.next != null && cur.next.val < num) {
                 cur = cur.next;
             }
 

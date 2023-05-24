@@ -10,7 +10,7 @@ class KthLargest {
             add(nums[i]);
         }
     }
-    
+
     public int add(int val) {
         q.offer(val);
 

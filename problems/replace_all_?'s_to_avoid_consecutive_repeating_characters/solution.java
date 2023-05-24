@@ -1,5 +1,5 @@
 class Solution {
-    public String modifyString(String s) {  
+    public String modifyString(String s) {
         char[] arr = s.toCharArray();
         int n = arr.length;
         for (int i = 0; i < n; i++) {
@@ -16,7 +16,7 @@ class Solution {
                 }
             }
         }
-        
+
         return new String(arr);
     }
 }

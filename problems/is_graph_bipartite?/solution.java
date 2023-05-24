@@ -12,7 +12,7 @@ class Solution {
 
                 while (!stack.isEmpty()) {
                     Integer node = stack.removeLast();
-                    for (int nei: graph[node]) {
+                    for (int nei : graph[node]) {
                         if (color[nei] == -1) {
                             stack.push(nei);
                             color[nei] = color[node] ^ 1;
@@ -20,7 +20,7 @@ class Solution {
                             return false;
                         }
                     }
-                } 
+                }
             }
         }
 

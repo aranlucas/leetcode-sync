@@ -4,9 +4,9 @@ class Solution {
             if (n % x == 0) {
                 --k;
                 if (k == 0) {
-                    return x;    
-                }    
-            }    
+                    return x;
+                }
+            }
         }
         return k == 1 ? n : -1;
     }

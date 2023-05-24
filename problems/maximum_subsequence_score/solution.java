@@ -4,12 +4,11 @@ class Solution {
 
         // Sort pair (nums1[i], nums2[i]) by nums2[i] in decreasing order.
         for (int i = 0; i < nums1.length; i++) {
-            pairs[i] = new int[] { nums1[i], nums2[i] };
+            pairs[i] = new int[] {nums1[i], nums2[i]};
         }
 
         Arrays.sort(pairs, (a, b) -> b[1] - a[1]);
-        
-        
+
         // Use a min-heap to maintain the top k elements.
         PriorityQueue<Integer> topKHeap = new PriorityQueue<>(k, (a, b) -> a - b);
         long topKSum = 0;
@@ -19,18 +18,18 @@ class Solution {
         }
         // The score of the first k pairs.
         long answer = topKSum * pairs[k - 1][1];
-        
+
         // Iterate over every nums2[i] as minimum from nums2.
         for (int i = k; i < nums1.length; ++i) {
             // Remove the smallest integer from the previous top k elements
             // then ddd nums1[i] to the top k elements.
             topKSum += pairs[i][0] - topKHeap.poll();
             topKHeap.add(pairs[i][0]);
-            
+
             // Update answer as the maximum score.
             answer = Math.max(answer, topKSum * pairs[i][1]);
         }
-        
+
         return answer;
     }
 }

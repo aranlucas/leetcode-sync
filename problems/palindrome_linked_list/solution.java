@@ -20,7 +20,7 @@ class Solution {
 
         ListNode second = reverseList(slow);
 
-       // Check whether or not there is a palindrome.
+        // Check whether or not there is a palindrome.
         ListNode p1 = head;
         ListNode p2 = second;
 
@@ -30,11 +30,11 @@ class Solution {
             }
             p1 = p1.next;
             p2 = p2.next;
-        } 
-        
+        }
+
         return true;
     }
-    
+
     private ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode curr = head;
@@ -47,5 +47,4 @@ class Solution {
         }
         return prev;
     }
-
 }
