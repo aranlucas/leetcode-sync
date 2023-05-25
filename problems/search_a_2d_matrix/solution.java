@@ -3,6 +3,7 @@ class Solution {
         int lo = 0;
         int hi = matrix.length * matrix[0].length - 1;
 
+
         while (lo <= hi) {
             int mid = lo + hi >> 1;
 
@@ -26,6 +27,6 @@ class Solution {
 
         int y = index % width;
         int x = index / width;
-        return new int[] {x, y};
+        return new int[] { x, y};
     }
 }
