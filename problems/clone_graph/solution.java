@@ -34,7 +34,7 @@ class Solution {
 
         visited.put(node, clone);
 
-        for (Node neighbor: node.neighbors) {
+        for (Node neighbor : node.neighbors) {
             clone.neighbors.add(cloneGraph(neighbor));
         }
 

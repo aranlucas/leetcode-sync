@@ -14,7 +14,7 @@ class Solution {
     int dfs(Map<Integer, List<Integer>> adj, int[] informTime, int curr) {
         int maxTime = 0;
 
-        for (int nei: adj.getOrDefault(curr, new ArrayList<>())) {
+        for (int nei : adj.getOrDefault(curr, new ArrayList<>())) {
             maxTime = Math.max(dfs(adj, informTime, nei), maxTime);
         }
 

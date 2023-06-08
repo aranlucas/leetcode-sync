@@ -1,6 +1,7 @@
 class Solution {
-    int[][] DIRECTIONS = new int[][]{{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
-    
+    int[][] DIRECTIONS =
+            new int[][] {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+
     public int shortestPathBinaryMatrix(int[][] grid) {
         // Firstly, we need to check that the start and target cells are open.
         if (grid[0][0] != 0 || grid[grid.length - 1][grid[0].length - 1] != 0) {
@@ -9,7 +10,7 @@ class Solution {
 
         Queue<int[]> queue = new ArrayDeque<>();
         grid[0][0] = 1;
-        queue.add(new int[]{0, 0});
+        queue.add(new int[] {0, 0});
 
         while (!queue.isEmpty()) {
             int[] cell = queue.poll();
@@ -20,11 +21,11 @@ class Solution {
                 return distance;
             }
 
-            for (int[] dir: DIRECTIONS) {
+            for (int[] dir : DIRECTIONS) {
                 int dx = cell[0] + dir[0];
                 int dy = cell[1] + dir[1];
 
-                if (dx < 0 || dy < 0 || dx >= grid.length|| dy >= grid[0].length) {
+                if (dx < 0 || dy < 0 || dx >= grid.length || dy >= grid[0].length) {
                     continue;
                 }
 

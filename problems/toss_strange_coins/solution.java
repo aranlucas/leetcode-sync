@@ -23,7 +23,7 @@ class Solution {
             return memo[index][target];
         }
 
-        double prob1 = findProbability(index + 1, n, memo, prob, target -1) * prob[index];
+        double prob1 = findProbability(index + 1, n, memo, prob, target - 1) * prob[index];
         double prob2 = findProbability(index + 1, n, memo, prob, target) * (1 - prob[index]);
         return memo[index][target] = prob1 + prob2;
     }

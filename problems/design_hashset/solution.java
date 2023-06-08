@@ -9,7 +9,7 @@ class MyHashSet {
             buckets.add(new LinkedList<>());
         }
     }
-    
+
     public void add(int key) {
         int index = hash(key);
         List<Integer> bucket = buckets.get(index);
@@ -17,20 +17,20 @@ class MyHashSet {
             bucket.add(key);
         }
     }
-    
+
     public void remove(int key) {
         int index = hash(key);
         List<Integer> bucket = buckets.get(index);
 
         bucket.remove(Integer.valueOf(key));
     }
-    
+
     public boolean contains(int key) {
         int index = hash(key);
         List<Integer> bucket = buckets.get(index);
         return bucket.contains(key);
     }
-    
+
     private int hash(int key) {
         return key % size;
     }

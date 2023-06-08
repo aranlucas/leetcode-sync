@@ -13,7 +13,7 @@ class Solution {
 
         return numberOfComponents;
     }
-    
+
     public void dfs(int node, int[][] isConnected, boolean[] visit) {
         visit[node] = true;
         for (int i = 0; i < isConnected.length; i++) {

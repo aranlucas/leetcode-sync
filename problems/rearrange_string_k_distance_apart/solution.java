@@ -1,13 +1,14 @@
 class Solution {
     public String rearrangeString(String s, int k) {
-        if (s.length() == 0 || k <= 0){
+        if (s.length() == 0 || k <= 0) {
             return s;
         }
         HashMap<Character, Integer> map = new HashMap<>();
-        for (Character c : s.toCharArray()){
+        for (Character c : s.toCharArray()) {
             map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        PriorityQueue<Character> pq = new PriorityQueue<>((a , b)-> map.get(b).compareTo(map.get(a)));
+        PriorityQueue<Character> pq =
+                new PriorityQueue<>((a, b) -> map.get(b).compareTo(map.get(a)));
 
         Queue<Character> q = new ArrayDeque<>();
 
@@ -29,7 +30,7 @@ class Solution {
                 }
             }
         }
-        
+
         System.out.println(q);
         return sb.toString().length() == s.length() ? sb.toString() : "";
     }

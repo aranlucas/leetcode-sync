@@ -10,17 +10,20 @@ class Solution {
         }
         if (cur > n) {
             return 0.0;
-        }  
+        }
         if (cur >= k) {
             return 1.0;
         }
 
         if (memo[cur] != 0) {
             return memo[cur];
-        } 
+        }
 
-        double prob = solve(n, k, maxPts, cur + 1, memo) - (solve(n, k, maxPts, cur + 1 + maxPts, memo) - solve(n, k, maxPts, cur + 1, memo)) / maxPts;
-
+        double prob =
+                solve(n, k, maxPts, cur + 1, memo)
+                        - (solve(n, k, maxPts, cur + 1 + maxPts, memo)
+                                        - solve(n, k, maxPts, cur + 1, memo))
+                                / maxPts;
 
         return memo[cur] = prob;
     }

@@ -1,15 +1,15 @@
 class Solution {
     public void rotate(int[][] matrix) {
         int l = 0;
-        int r = matrix.length-1;
-        
-        while ( l < r ) {
-            for(int i = 0; i < r - l; i++) {
+        int r = matrix.length - 1;
+
+        while (l < r) {
+            for (int i = 0; i < r - l; i++) {
                 int top = l;
                 int bottom = r;
                 int topLeft = matrix[top][l + i];
 
-                //move bottom left into top left
+                // move bottom left into top left
                 matrix[top][l + i] = matrix[bottom - i][l];
 
                 // move bottom right into bottom left
@@ -26,5 +26,4 @@ class Solution {
         }
         System.out.println(Arrays.deepToString(matrix));
     }
-
 }

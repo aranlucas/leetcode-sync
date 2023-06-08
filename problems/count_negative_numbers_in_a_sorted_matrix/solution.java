@@ -4,7 +4,7 @@ class Solution {
 
         for (int[] row : grid) {
             int left = 0;
-            int right = row.length -1;
+            int right = row.length - 1;
 
             while (left <= right) {
                 int mid = (right + left) / 2;
@@ -12,7 +12,7 @@ class Solution {
                 if (row[mid] < 0) {
                     right = mid - 1;
                 } else {
-                    left =  mid + 1;
+                    left = mid + 1;
                 }
             }
 

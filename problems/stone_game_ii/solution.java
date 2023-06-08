@@ -1,5 +1,5 @@
 class Solution {
-    public int stoneGameII(int[] piles) {        
+    public int stoneGameII(int[] piles) {
         int[][][] dp = new int[2][piles.length + 1][piles.length + 1];
         for (int p = 0; p < 2; p++) {
             for (int i = 0; i <= piles.length; i++) {
@@ -27,9 +27,9 @@ class Solution {
             s += piles[i + x - 1];
 
             if (p == 0) {
-                res = Math.max(res, s + solve(piles, dp, 1, i + x, Math.max(m , x)));
+                res = Math.max(res, s + solve(piles, dp, 1, i + x, Math.max(m, x)));
             } else {
-                res = Math.min(res, solve(piles, dp, 0, i + x, Math.max(m , x)));
+                res = Math.min(res, solve(piles, dp, 0, i + x, Math.max(m, x)));
             }
         }
 

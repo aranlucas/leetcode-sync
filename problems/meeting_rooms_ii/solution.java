@@ -21,7 +21,8 @@ class Solution {
                 allocator.poll();
             }
             // If a new room is to be assigned, then also we add to the heap,
-            // If an old room is allocated, then also we have to add to the heap with updated end time.
+            // If an old room is allocated, then also we have to add to the heap with updated end
+            // time.
             allocator.add(intervals[i][1]);
         }
         // The size of the heap tells us the minimum rooms required for all the meetings.
