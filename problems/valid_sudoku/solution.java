@@ -1,19 +1,29 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
-        Set<String> seen = new HashSet<String>();
+        Set<String> seen = new HashSet<>();
 
-        // row
+
+
         for (int r = 0; r < board.length; r++) {
-            // column
-            for (int c = 0; c < board[r].length; c++) {
+            for (int c = 0; c < board[0].length; c++) {
                 char curr = board[r][c];
 
                 if (curr == '.') {
                     continue;
                 }
-                if (!seen.add(curr + " in row " + r)
-                        || !seen.add(curr + " in column " + c)
-                        || !seen.add(curr + " in block " + r / 3 + "-" + c / 3)) {
+
+                // Check row
+                if (!seen.add(curr + "in row" + r)) {
+                    return false;
+                }
+
+                // Check column
+                if (!seen.add(curr + "in column" + c)) {
+                    return false;
+                }
+
+                // Check block
+                if (!seen.add(curr + "in block" +  r/3 + "-" + c/3)) {
                     return false;
                 }
             }
