@@ -1,26 +1,35 @@
 class Solution {
     public int search(int[] nums, int target) {
-        int l = 0;
-        int r = nums.length - 1;
+        
+        int left = 0;
+        int right = nums.length - 1;
 
-        while (l <= r) {
-            int mid = (l + r) / 2;
+
+        while (left <= right) {
+            int mid = (left + right) / 2;
 
             if (nums[mid] == target) {
                 return mid;
             }
-
-            if (nums[mid] >= nums[l]) {
-                if (target >= nums[l] && target < nums[mid]) {
-                    r = mid - 1;
+            
+            // l     m     r
+            //[4,5,6,7,0,1,2]
+            // Array is sorted on left side
+            if (nums[left] <= nums[mid]) {
+                // Start searching.
+                // if [left] < target < [middle] then do recursion with left, middle - 1 (right)
+                if (nums[left] <= target && target <= nums[mid]) {
+                    right = mid - 1;
                 } else {
-                    l = mid + 1;
+                    left = mid + 1;
                 }
             } else {
-                if (target <= nums[r] && target > nums[mid]) {
-                    l = mid + 1;
+                // Sorted right side
+                // if [middle] < target < [right] then do recursion with middle + 1 (left), right
+                if (nums[mid] <= target && target <= nums[right] ) {
+                    left = mid + 1;
                 } else {
-                    r = mid - 1;
+                    right = mid - 1;
                 }
             }
         }
