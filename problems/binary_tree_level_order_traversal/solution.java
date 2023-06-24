@@ -18,29 +18,30 @@ class Solution {
         if (root == null) {
             return new ArrayList<>();
         }
-        List<List<Integer>> answer = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();
 
-        Deque<TreeNode> q = new LinkedList<>();
+        Deque<TreeNode> q = new ArrayDeque<>();
 
         q.addLast(root);
 
         while (!q.isEmpty()) {
+            List<Integer> l = new ArrayList<>();
             int size = q.size();
-            List<Integer> level = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 TreeNode cur = q.removeFirst();
-                level.add(cur.val);
+                l.add(cur.val);
                 if (cur.left != null) {
-                    q.add(cur.left);
+                    q.addLast(cur.left);
                 }
 
                 if (cur.right != null) {
-                    q.add(cur.right);
+                    q.addLast(cur.right);
                 }
             }
-            answer.add(level);
+            result.add(l);
         }
 
-        return answer;
+
+        return result;
     }
 }
