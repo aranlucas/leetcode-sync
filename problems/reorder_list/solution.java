@@ -10,48 +10,41 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
-        ListNode dummy = head;
-        ListNode curr = head;
-
-        // Find middle - which should be slow
+        
+        // Find the middle
         ListNode slow = head;
         ListNode fast = head;
+
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            System.out.println(slow.val);
         }
 
-        ListNode reverseList = reverseList(slow);
+        // Slow is now in the middle.
+        // Reverse the second half of List
 
-        mergeLists(head, reverseList);
-    }
-
-    private ListNode reverseList(ListNode head) {
         ListNode prev = null;
-        ListNode curr = head;
-        ListNode tmp = head;
+        ListNode curr = slow;
+
         while (curr != null) {
-            tmp = curr.next;
+            ListNode next = curr.next;
 
             curr.next = prev;
             prev = curr;
-            curr = tmp;
+            curr = next;
         }
 
-        return prev;
-    }
-
-    private void mergeLists(ListNode first, ListNode second) {
-        ListNode tmp = null;
-        while (second.next != null) {
-            tmp = first.next;
-            first.next = second;
-            first = tmp;
-
-            tmp = second.next;
-            second.next = first;
-            second = tmp;
+        // Merge the two lists (head && prev)
+        ListNode l1 = head;
+        ListNode l2 = prev;
+        while (l2.next != null) {
+            ListNode tmp1 = l1.next;
+            l1.next = l2;
+            l1 = tmp1;
+            
+            ListNode tmp2 = l2.next;
+            l2.next = l1;
+            l2 = tmp2;
         }
     }
 }
