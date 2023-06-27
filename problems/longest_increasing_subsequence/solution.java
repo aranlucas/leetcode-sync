@@ -1,21 +1,29 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        if (nums.length == 0) {
+        Integer[][] memo = new Integer[nums.length][nums.length];
+        return solve(-1, 0, nums, memo);
+    }
+
+    public int solve(int prev, int curr, int[] nums, Integer[][] memo) {
+        if (curr == nums.length) {
             return 0;
         }
-        int[] dp = new int[nums.length];
-        dp[0] = 1;
-        int maxans = 1;
-        for (int i = 1; i < dp.length; i++) {
-            int maxval = 0;
-            for (int j = 0; j < i; j++) {
-                if (nums[i] > nums[j]) {
-                    maxval = Math.max(maxval, dp[j]);
-                }
-            }
-            dp[i] = maxval + 1;
-            maxans = Math.max(maxans, dp[i]);
+
+        if (memo[prev + 1][curr] != null) {
+            return memo[prev + 1][curr];
         }
-        return maxans;
+
+
+        int take = 0;
+        if (prev == -1 || nums[prev] < nums[curr]) {
+            // Use curr in sequence
+            take = 1 + solve(curr, curr + 1, nums, memo);
+        }
+
+        // Don't use this number in sequence
+        int noTake = solve(prev, curr + 1, nums, memo);
+
+        int answer = Math.max(take, noTake);
+        return memo[prev + 1][curr] = answer;
     }
 }
