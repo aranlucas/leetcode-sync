@@ -1,53 +1,39 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
+        
+        int[] indegrees = new int[numCourses];
 
-        Map<Integer, List<Integer>> adj = new HashMap();
+        Map<Integer, List<Integer>> adj = new HashMap<>();
 
         for (int i = 0; i < numCourses; i++) {
-            adj.computeIfAbsent(i, k -> new ArrayList());
+            adj.put(i, new ArrayList<>());
         }
 
         for (int i = 0; i < prerequisites.length; i++) {
-            int[] prereq = prerequisites[i];
-            adj.get(prereq[1]).add(prereq[0]);
+            int[] pre = prerequisites[i];
+            adj.get(pre[1]).add(pre[0]);
+            indegrees[pre[0]]++;
         }
 
-        boolean[] checked = new boolean[numCourses];
-        boolean[] path = new boolean[numCourses];
-        for (int node : adj.keySet()) {
-            if (dfs(adj, node, path, checked)) {
-                return false;
+        Queue<Integer> q = new LinkedList<>();
+
+        for (int i = 0; i < numCourses; i++) {
+            if (indegrees[i] == 0) {
+                q.offer(i);
             }
         }
-        return true;
-    }
-
-    private boolean dfs(
-            Map<Integer, List<Integer>> adj, int node, boolean[] path, boolean[] checked) {
-        // bottom cases
-        if (checked[node])
-            // this node has been checked, no cycle would be formed with this node.
-            return false;
-
-        if (path[node]) {
-            return true;
-        }
-
-        if (!adj.containsKey(node)) {
-            return false;
-        }
-        path[node] = true;
-
-        boolean ret = false;
-
-        for (int neighbor : adj.get(node)) {
-            ret = dfs(adj, neighbor, path, checked);
-            if (ret) {
-                break;
+        int nodesVisited = 0;
+        while (!q.isEmpty()) {
+            int node = q.poll();
+            nodesVisited++;
+            for (int neighbor : adj.get(node)) {
+                indegrees[neighbor]--;
+                if (indegrees[neighbor] == 0) {
+                    q.offer(neighbor);
+                }
             }
         }
-        path[node] = false;
-        checked[node] = true;
-        return ret;
+
+        return nodesVisited == numCourses;
     }
 }
