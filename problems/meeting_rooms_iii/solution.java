@@ -20,9 +20,8 @@ class Solution {
             }
 
             var delayedStart = meeting[0];
-            if (rooms
-                    .isEmpty()) { // no available rooms, adjust the next meeting start time with
-                                  // delay
+            if (rooms.isEmpty()) { // no available rooms, adjust the next meeting start time with
+                // delay
                 var await = runningMeetings.poll();
                 delayedStart = await[0];
                 rooms.add(await[1]);
