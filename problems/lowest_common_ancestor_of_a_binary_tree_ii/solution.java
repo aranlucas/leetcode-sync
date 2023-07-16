@@ -15,7 +15,8 @@ class Solution {
     }
 
     public TreeNode dfs(TreeNode root, TreeNode p, TreeNode q, Set<Integer> found) {
-        if (root == null) return null;
+        if (root == null)
+            return null;
         TreeNode l = dfs(root.left, p, q, found);
         TreeNode r = dfs(root.right, p, q, found);
         if (root.val == p.val || root.val == q.val) {
@@ -23,7 +24,8 @@ class Solution {
             return root;
         }
         // If two target nodes are on separate branches, LCA is the root.
-        if (l != null && r != null) return root;
+        if (l != null && r != null)
+            return root;
         // one node is on one branch or none was found in both branches.
         return l != null ? l : r;
     }
