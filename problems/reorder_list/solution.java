@@ -10,7 +10,7 @@
  */
 class Solution {
     public void reorderList(ListNode head) {
-        
+
         // Find the middle
         ListNode slow = head;
         ListNode fast = head;
@@ -41,7 +41,7 @@ class Solution {
             ListNode tmp1 = l1.next;
             l1.next = l2;
             l1 = tmp1;
-            
+
             ListNode tmp2 = l2.next;
             l2.next = l1;
             l2 = tmp2;

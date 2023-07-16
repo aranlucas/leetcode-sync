@@ -41,7 +41,6 @@ class Solution {
             result.add(l);
         }
 
-
         return result;
     }
 }

@@ -13,7 +13,8 @@ class Solution {
             graph.computeIfAbsent(from, k -> new ArrayList<>()).add(new Pair(to, pathProb));
         }
 
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> Double.compare(b.probability, a.probability));
+        PriorityQueue<Pair> pq =
+                new PriorityQueue<>((a, b) -> Double.compare(b.probability, a.probability));
 
         pq.add(new Pair(start, 1.0));
         Set<Integer> seen = new HashSet<>();
@@ -22,7 +23,7 @@ class Solution {
             if (cur.edge == end) {
                 return cur.probability;
             }
-            if (seen.contains(cur.edge) ) {
+            if (seen.contains(cur.edge)) {
                 continue;
             }
             seen.add(cur.edge);

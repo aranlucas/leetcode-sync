@@ -1,24 +1,25 @@
 class HitCounter {
-    LinkedHashMap<Integer,Integer> map;
+    LinkedHashMap<Integer, Integer> map;
     final int fiveMin = 300;
 
     public HitCounter() {
-        map = new LinkedHashMap<Integer,Integer>(){
-            @Override
-            protected boolean removeEldestEntry(Map.Entry<Integer,Integer> eldest){
-                return map.size() > fiveMin;
-            }
-        };    
+        map =
+                new LinkedHashMap<Integer, Integer>() {
+                    @Override
+                    protected boolean removeEldestEntry(Map.Entry<Integer, Integer> eldest) {
+                        return map.size() > fiveMin;
+                    }
+                };
     }
-    
+
     public void hit(int timestamp) {
-        map.put(timestamp,map.getOrDefault(timestamp, 0) + 1);
+        map.put(timestamp, map.getOrDefault(timestamp, 0) + 1);
     }
-    
+
     public int getHits(int timestamp) {
         int start = timestamp - fiveMin;
         int sum = 0;
-        for (int tsp : map.keySet()){
+        for (int tsp : map.keySet()) {
             if (tsp > start) {
                 sum += map.get(tsp);
             }

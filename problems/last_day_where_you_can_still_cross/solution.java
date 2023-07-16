@@ -1,6 +1,7 @@
 class Solution {
 
-    int[][] DIRS = {{0 , 1}, {1, 0}, {-1,0}, {0, -1}};
+    int[][] DIRS = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+
     public int latestDayToCross(int row, int col, int[][] cells) {
         int left = 1;
         int right = row * col;
@@ -28,19 +29,19 @@ class Solution {
 
         for (int i = 0; i < col; i++) {
             if (matrix[0][i] == 0) {
-                q.offer(new int[] { 0, i});
+                q.offer(new int[] {0, i});
                 matrix[0][i] = -1;
             }
         }
 
         while (!q.isEmpty()) {
             int[] cur = q.poll();
-            
+
             if (cur[0] == row - 1) {
                 return true;
             }
-            
-            for (int[] dir: DIRS) {
+
+            for (int[] dir : DIRS) {
                 int dx = cur[0] + dir[0];
                 int dy = cur[1] + dir[1];
 

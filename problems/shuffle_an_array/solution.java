@@ -8,13 +8,13 @@ class Solution {
         array = nums;
         original = nums.clone();
     }
-    
+
     public int[] reset() {
         array = original;
         original = original.clone();
         return array;
     }
-    
+
     public int[] shuffle() {
         List<Integer> aux = getArrayCopy();
 
@@ -26,7 +26,7 @@ class Solution {
 
         return array;
     }
-    
+
     private List<Integer> getArrayCopy() {
         List<Integer> asList = new ArrayList<Integer>();
         for (int i = 0; i < array.length; i++) {

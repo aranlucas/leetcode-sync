@@ -1,7 +1,6 @@
 class Solution {
     public int maxConsecutiveAnswers(String answerKey, int k) {
 
-
         Map<Character, Integer> count = new HashMap<>();
         int maxFreq = 0;
         int left = 0;

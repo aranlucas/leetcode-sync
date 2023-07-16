@@ -13,7 +13,6 @@ class Solution {
             return memo[prev + 1][curr];
         }
 
-
         int take = 0;
         if (prev == -1 || nums[prev] < nums[curr]) {
             // Use curr in sequence

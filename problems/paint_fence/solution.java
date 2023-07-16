@@ -23,7 +23,7 @@ class Solution {
         }
         int paintPrev = (k - 1) * solve(k, n - 1, memo);
 
-        int paint2Prev = (k -1) * solve(k, n - 2, memo);
+        int paint2Prev = (k - 1) * solve(k, n - 2, memo);
         return memo[n] = paintPrev + paint2Prev;
     }
 }

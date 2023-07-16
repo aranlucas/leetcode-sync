@@ -1,16 +1,16 @@
 class Solution {
     public List<Integer> eventualSafeNodes(int[][] graph) {
-        
+
         int n = graph.length;
         int[] indegree = new int[n];
         List<List<Integer>> adj = new ArrayList<>();
 
-        for(int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {
             adj.add(new ArrayList<>());
         }
 
         for (int i = 0; i < n; i++) {
-            for (int node: graph[i]) {
+            for (int node : graph[i]) {
                 adj.get(node).add(i);
                 indegree[i]++;
             }

@@ -15,6 +15,7 @@
  */
 class Solution {
     record Pair(boolean uni, int count) {}
+
     public int countUnivalSubtrees(TreeNode root) {
         return dfs(root).count();
     }

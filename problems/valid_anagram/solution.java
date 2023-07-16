@@ -3,7 +3,6 @@ class Solution {
         return sortWord(s).equals(sortWord(t));
     }
 
-
     public String sortWord(String s) {
         char[] sChars = s.toCharArray();
 

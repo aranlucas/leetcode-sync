@@ -36,7 +36,7 @@ class Solution {
         }
 
         Map<TreeNode, Integer> maxRootPath = new HashMap<>();
-        
+
         for (TreeNode node : postorder) {
             int left = Math.max(maxRootPath.getOrDefault(node.left, 0), 0);
             int right = Math.max(maxRootPath.getOrDefault(node.right, 0), 0);

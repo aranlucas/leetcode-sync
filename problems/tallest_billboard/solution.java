@@ -8,16 +8,16 @@ class Solution {
 
     public int solve(int diff, int index, int[] rods) {
         if (index >= rods.length) {
-            if (diff == 0){
+            if (diff == 0) {
                 return 0;
             }
             return Integer.MIN_VALUE;
         }
 
-        if (memo[index][diff + 5001] != null){
+        if (memo[index][diff + 5001] != null) {
             return memo[index][diff + 5001];
         }
-        
+
         int currentRod = rods[index];
         int solveAddToLeft = currentRod + solve(diff + currentRod, index + 1, rods);
         int solveAddToRight = solve(diff - currentRod, index + 1, rods);

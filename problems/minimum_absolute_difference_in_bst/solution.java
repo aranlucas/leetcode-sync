@@ -18,7 +18,7 @@ class Solution {
         List<Integer> list = new ArrayList<>();
 
         inOrder(root, list);
-        
+
         int min = Integer.MAX_VALUE;
 
         for (int i = 0; i < list.size() - 1; i++) {

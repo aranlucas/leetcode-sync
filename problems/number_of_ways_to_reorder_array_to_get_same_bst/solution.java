@@ -1,10 +1,10 @@
 class Solution {
-    private long mod = (long)1e9 + 7;
+    private long mod = (long) 1e9 + 7;
     private long[][] table;
 
     public int numOfWays(int[] nums) {
         int m = nums.length;
-        
+
         // Table of Pascal's triangle
         table = new long[m][m];
         for (int i = 0; i < m; ++i) {
@@ -16,7 +16,7 @@ class Solution {
             }
         }
         List<Integer> arrList = Arrays.stream(nums).boxed().collect(Collectors.toList());
-        return (int)((dfs(arrList) - 1) % mod);
+        return (int) ((dfs(arrList) - 1) % mod);
     }
 
     private long dfs(List<Integer> nums) {

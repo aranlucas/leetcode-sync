@@ -3,7 +3,6 @@ class Solution {
         int l = 0;
         int r = heights.length - 1;
 
-
         int maxArea = 0;
         while (l < r) {
             int width = r - l;

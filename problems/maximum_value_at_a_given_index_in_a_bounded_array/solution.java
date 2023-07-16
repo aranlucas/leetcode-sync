@@ -17,12 +17,12 @@ class Solution {
 
         return left;
     }
-    
+
     private long test(int n, int index, int a) {
         int b = Math.max(a - index, 0);
-        long res = (long)(a + b) * (a - b + 1) / 2;
+        long res = (long) (a + b) * (a - b + 1) / 2;
         b = Math.max(a - ((n - 1) - index), 0);
-        res += (long)(a + b) * (a - b + 1) / 2;
+        res += (long) (a + b) * (a - b + 1) / 2;
         return res - a;
     }
 }

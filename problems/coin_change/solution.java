@@ -20,12 +20,11 @@ class Solution {
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < coins.length; i++) {
             int solve = solve(coins, amount - coins[i], memo);
-            if (solve != - 1) {
+            if (solve != -1) {
                 min = Math.min(min, solve + 1);
             }
-        
         }
-        
+
         return memo[amount] = (min == Integer.MAX_VALUE) ? -1 : min;
     }
 }

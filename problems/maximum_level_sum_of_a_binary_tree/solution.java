@@ -41,7 +41,6 @@ class Solution {
                 }
             }
 
-
             if (maxSum < levelSum) {
                 maxSum = levelSum;
                 ans = level;

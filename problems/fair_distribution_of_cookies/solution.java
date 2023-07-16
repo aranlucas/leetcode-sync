@@ -4,8 +4,7 @@ class Solution {
     void helper(int[] cookies, int start, int k, int[] temp) {
         if (start == cookies.length) {
             int max = 0;
-            for (int c : temp)
-                max = Math.max(max, c);
+            for (int c : temp) max = Math.max(max, c);
             ans = Math.min(ans, max);
             return;
         }

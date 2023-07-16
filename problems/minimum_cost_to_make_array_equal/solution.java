@@ -3,7 +3,7 @@ class Solution {
         int left = Integer.MAX_VALUE;
         int right = 0;
 
-        for (int num: nums) {
+        for (int num : nums) {
             left = Math.min(left, num);
             right = Math.max(right, num);
         }

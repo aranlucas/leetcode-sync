@@ -5,7 +5,7 @@ class Solution {
         while (x != 0) {
             int d = x % 10;
             x = x / 10;
-            
+
             if (reverse > Integer.MAX_VALUE / 10 || (reverse == Integer.MAX_VALUE / 10 && d > 7)) {
                 return 0;
             }
@@ -15,7 +15,6 @@ class Solution {
 
             reverse = reverse * 10 + d;
         }
- 
 
         return reverse;
     }

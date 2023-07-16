@@ -1,6 +1,6 @@
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        
+
         int[] indegrees = new int[numCourses];
 
         Map<Integer, List<Integer>> adj = new HashMap<>();

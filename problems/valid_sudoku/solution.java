@@ -21,7 +21,7 @@ class Solution {
                 }
 
                 // Check block
-                if (!seen.add(curr + "in block" +  r/3 + "-" + c/3)) {
+                if (!seen.add(curr + "in block" + r / 3 + "-" + c / 3)) {
                     return false;
                 }
             }

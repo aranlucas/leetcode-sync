@@ -4,7 +4,7 @@ class Solution {
             return intersect(nums2, nums1);
         }
         HashMap<Integer, Integer> m = new HashMap<>();
-        
+
         for (int n : nums1) {
             m.put(n, m.getOrDefault(n, 0) + 1);
         }

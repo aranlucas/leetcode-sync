@@ -24,14 +24,13 @@ class Solution {
         int nextEvent = bisectRight(events, events[pos][1]);
 
         int take = events[pos][2] + solve(nextEvent, events, k - 1, memo);
-        
+
         return memo[pos][k] = Math.max(take, skip);
     }
 
     public int bisectRight(int[][] events, int target) {
         int left = 0;
         int right = events.length;
-
 
         while (left < right) {
             int mid = (left + right) / 2;

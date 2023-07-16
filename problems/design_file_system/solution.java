@@ -5,7 +5,7 @@ class FileSystem {
         map = new HashMap<>();
         map.put("", -1);
     }
-    
+
     public boolean createPath(String path, int value) {
         if (map.containsKey(path)) {
             return false;
@@ -18,7 +18,7 @@ class FileSystem {
         map.put(path, value);
         return true;
     }
-    
+
     public int get(String path) {
         return map.getOrDefault(path, -1);
     }

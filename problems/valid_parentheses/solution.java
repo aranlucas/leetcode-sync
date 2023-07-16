@@ -1,10 +1,10 @@
 class Solution {
 
-    Map<Character, Character> matching = Map.of(
-        '}', '{',
-        ')', '(',
-        ']', '['
-    );
+    Map<Character, Character> matching =
+            Map.of(
+                    '}', '{',
+                    ')', '(',
+                    ']', '[');
 
     public boolean isValid(String s) {
         Deque<Character> stack = new ArrayDeque<>();

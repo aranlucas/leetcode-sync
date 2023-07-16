@@ -2,7 +2,7 @@ class Solution {
     public int[] asteroidCollision(int[] asteroids) {
         Deque<Integer> stack = new ArrayDeque<>();
 
-        for (int asteroid: asteroids) {
+        for (int asteroid : asteroids) {
             if (asteroid > 0) {
                 stack.push(asteroid);
             } else {
@@ -10,8 +10,8 @@ class Solution {
                 // Collision only at + -
 
                 // Scenario + - one is destroyed
-                while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() < Math.abs(asteroid) ) {                  
-                    // destroy the previous positive one(s) 
+                while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() < Math.abs(asteroid)) {
+                    // destroy the previous positive one(s)
                     stack.pop();
                 }
 

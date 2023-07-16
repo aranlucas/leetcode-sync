@@ -1,20 +1,21 @@
 class Solution {
     int[][] DIRS = {
-      { 2, 1},
-      { 2, -1},
-      { -2, 1},
-      { -2, -1},
-      { 1, 2},
-      { 1, -2},
-      { -1, 2},
-      { -1, -2},
+        {2, 1},
+        {2, -1},
+        {-2, 1},
+        {-2, -1},
+        {1, 2},
+        {1, -2},
+        {-1, 2},
+        {-1, -2},
     };
+
     public int[][] tourOfKnight(int m, int n, int r, int c) {
         int[][] board = new int[m][n];
         int[][] result = new int[m][n];
 
         for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[0].length; j++ ) {
+            for (int j = 0; j < board[0].length; j++) {
                 board[i][j] = -1;
             }
         }
@@ -33,14 +34,15 @@ class Solution {
             return;
         }
 
-        for (int[] dir: DIRS) {
+        for (int[] dir : DIRS) {
             int dx = dir[0] + i;
             int dy = dir[1] + j;
 
             if (dx >= 0 && dx < m && dy >= 0 && dy < n && currBoard[dx][dy] == -1) {
                 currBoard[dx][dy] = ++step;
-                backtrack(dx, dy, step, m, n, result, currBoard);              
-                currBoard[dx][dy] = -1;;
+                backtrack(dx, dy, step, m, n, result, currBoard);
+                currBoard[dx][dy] = -1;
+                ;
                 step--;
             }
         }

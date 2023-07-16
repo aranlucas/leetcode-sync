@@ -3,15 +3,15 @@ class Solution {
         List<List<Integer>> result = new ArrayList<>();
 
         int start = lower;
-        
-        for (int num: nums){
+
+        for (int num : nums) {
             if (start < num) {
                 result.add(Arrays.asList(start, num - 1));
             }
             start = num + 1;
         }
-        
-        if (start <= upper){
+
+        if (start <= upper) {
             result.add(Arrays.asList(start, upper));
         }
 

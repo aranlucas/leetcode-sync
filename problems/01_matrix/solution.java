@@ -1,5 +1,5 @@
 class Solution {
-    int[][] directions = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+    int[][] directions = new int[][] {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 
     public int[][] updateMatrix(int[][] mat) {
         int m = mat.length;
@@ -27,16 +27,15 @@ class Solution {
                 int[] state = q.poll();
                 int r = state[0];
                 int c = state[1];
-                for (int[] direction: directions) {
+                for (int[] direction : directions) {
                     int dx = r + direction[0];
                     int dy = c + direction[1];
 
                     if (valid(dx, dy, mat) && !seen[dx][dy]) {
                         seen[dx][dy] = true;
                         matrix[dx][dy] = level;
-                        q.offer(new int[] { dx, dy });
+                        q.offer(new int[] {dx, dy});
                     }
-                    
                 }
             }
             level++;
@@ -44,7 +43,7 @@ class Solution {
 
         return matrix;
     }
-    
+
     public boolean valid(int row, int col, int[][] mat) {
         return 0 <= row && row < mat.length && 0 <= col && col < mat[0].length;
     }

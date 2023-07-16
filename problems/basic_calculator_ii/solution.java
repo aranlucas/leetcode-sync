@@ -1,6 +1,6 @@
 class Solution {
     public int calculate(String s) {
-        
+
         Stack<Integer> stack = new Stack<>();
         int currentNumber = 0;
         char operation = '+';
@@ -11,26 +11,31 @@ class Solution {
                 currentNumber = (currentNumber * 10) + (current - '0');
             }
 
-            if (!Character.isDigit(current) && !Character.isWhitespace(current) || i == s.length() - 1) {
+            if (!Character.isDigit(current) && !Character.isWhitespace(current)
+                    || i == s.length() - 1) {
                 switch (operation) {
-                    case '-': {
-                        stack.push(-currentNumber);
-                        break;
-                    }
-                    case '+': {
-                        stack.push(currentNumber);
-                        break;
-                    }
-                    case '*': {
-                        stack.push(stack.pop() * currentNumber);
-                        break;
-                    }
-                    case '/': {
-                        stack.push(stack.pop() / currentNumber);
-                        break;     
-                    }
+                    case '-':
+                        {
+                            stack.push(-currentNumber);
+                            break;
+                        }
+                    case '+':
+                        {
+                            stack.push(currentNumber);
+                            break;
+                        }
+                    case '*':
+                        {
+                            stack.push(stack.pop() * currentNumber);
+                            break;
+                        }
+                    case '/':
+                        {
+                            stack.push(stack.pop() / currentNumber);
+                            break;
+                        }
                 }
-                
+
                 operation = current;
                 currentNumber = 0;
             }

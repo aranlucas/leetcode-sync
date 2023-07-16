@@ -15,7 +15,7 @@ class Solution {
             }
 
             return false;
-        } 
+        }
         int first = -1;
         int second = -1;
 
@@ -39,7 +39,6 @@ class Solution {
         }
 
         // All characters of both strings are the same except two indices.
-        return s.charAt(first) == goal.charAt(second) &&
-                s.charAt(second) == goal.charAt(first);
+        return s.charAt(first) == goal.charAt(second) && s.charAt(second) == goal.charAt(first);
     }
 }

@@ -1,6 +1,6 @@
 class Solution {
     public int longestSubarray(int[] nums) {
-        
+
         int longestSubarray = 0;
         int left = 0;
 

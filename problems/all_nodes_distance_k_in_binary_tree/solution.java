@@ -7,22 +7,20 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
-
-
 class Solution {
     public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
         Map<TreeNode, List<TreeNode>> graph = new HashMap<>();
 
-        traverse(root,null, graph);
+        traverse(root, null, graph);
 
         Set<TreeNode> visited = new HashSet<>();
         Deque<TreeNode> q = new ArrayDeque<>();
         List<Integer> answer = new ArrayList<>();
         q.add(target);
         visited.add(target);
-        
+
         int level = 0;
-        while(!q.isEmpty()) {
+        while (!q.isEmpty()) {
             int size = q.size();
 
             for (int i = 0; i < size; i++) {
@@ -50,7 +48,6 @@ class Solution {
             graph.get(node).add(parent);
             graph.get(parent).add(node);
         }
-
 
         if (node != null && node.left != null) {
             traverse(node.left, node, graph);
