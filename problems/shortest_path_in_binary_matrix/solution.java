@@ -1,43 +1,47 @@
 class Solution {
-    int[][] DIRECTIONS =
-            new int[][] {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
-
+    int[][] DIRS = {{1, 0}, {0, 1}, {-1,0}, {0, -1}, {1,1}, {-1, -1}, {1, -1}, {-1, 1}};
     public int shortestPathBinaryMatrix(int[][] grid) {
-        // Firstly, we need to check that the start and target cells are open.
-        if (grid[0][0] != 0 || grid[grid.length - 1][grid[0].length - 1] != 0) {
+        if (grid[0][0] != 0) {
             return -1;
         }
+        int n = grid.length;
+        int m = grid[0].length;
 
-        Queue<int[]> queue = new ArrayDeque<>();
-        grid[0][0] = 1;
-        queue.add(new int[] {0, 0});
+        boolean[][] seen = new boolean[n][m];
+        Deque<int[]> q = new ArrayDeque<>();
 
-        while (!queue.isEmpty()) {
-            int[] cell = queue.poll();
-            int row = cell[0];
-            int col = cell[1];
-            int distance = grid[row][col];
-            if (row == grid.length - 1 && col == grid[0].length - 1) {
-                return distance;
-            }
+        q.addFirst(new int[] {0 , 0});
+        seen[0][0] = true;
+        int level = 0;
+        while (!q.isEmpty()) {
+            int size = q.size();
 
-            for (int[] dir : DIRECTIONS) {
-                int dx = cell[0] + dir[0];
-                int dy = cell[1] + dir[1];
+            for (int i = 0; i < size; i++) {
+                int[] cur = q.removeFirst();
 
-                if (dx < 0 || dy < 0 || dx >= grid.length || dy >= grid[0].length) {
-                    continue;
+                if (cur[0] == n - 1 && cur[1] == m - 1) {
+                    return level + 1;
                 }
 
-                if (grid[dx][dy] != 0) {
-                    continue;
-                }
+                for (int[] dir : DIRS) {
+                    int dx = cur[0] + dir[0];
+                    int dy = cur[1] + dir[1];
 
-                queue.add(new int[] {dx, dy});
-                grid[dx][dy] = distance + 1;
+                    if (0 <= dx && dx < n && 0 <= dy && dy < m) {
+                        if (seen[dx][dy]) {
+                            continue;
+                        }
+                        if (grid[dx][dy] != 0){
+                            continue;
+                        }
+                        seen[dx][dy] = true;
+                        q.addLast(new int[] {dx, dy});
+                    }
+                }
             }
+
+            level++;
         }
-
         return -1;
     }
 }
