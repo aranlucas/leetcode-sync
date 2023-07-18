@@ -1,39 +1,39 @@
 class Solution {
     public boolean validPath(int n, int[][] edges, int source, int destination) {
-
-        // Store all edges in 'graph'.
         Map<Integer, List<Integer>> graph = new HashMap<>();
 
+
         for (int i = 0; i < n; i++) {
-            graph.put(i, new ArrayList<Integer>());
+            graph.put(i, new ArrayList<>());
         }
-        // Compute adjacency list
+
         for (int[] edge : edges) {
-            int a = edge[0], b = edge[1];
-            graph.get(a).add(b);
-            graph.get(b).add(a);
+            int from = edge[0];
+            int to = edge[1];
+            graph.get(from).add(to);
+            graph.get(to).add(from);
         }
 
-        // Store all the nodes to be visited in 'queue'.
-        boolean[] seen = new boolean[n];
-        Deque<Integer> queue = new ArrayDeque();
+        Deque<Integer> q = new ArrayDeque<>();
+        Set<Integer> seen = new HashSet<>();
 
-        queue.offer(source);
-        seen[source] = true;
-        while (!queue.isEmpty()) {
-            int currNode = queue.poll();
+        seen.add(source);
+        q.addLast(source);
 
-            if (currNode == destination) {
+        while (!q.isEmpty()) {
+            int cur = q.removeFirst();
+            if (cur == destination) {
                 return true;
             }
-
-            for (int nextNode : graph.get(currNode)) {
-                if (!seen[nextNode]) {
-                    seen[nextNode] = true;
-                    queue.offer(nextNode);
+            for (int nei : graph.get(cur)) {
+                if (seen.contains(nei)) {
+                    continue;
                 }
+                seen.add(nei);
+                q.addLast(nei);
             }
         }
+
         return false;
     }
 }
