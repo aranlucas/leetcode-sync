@@ -1,56 +1,67 @@
 class Solution {
     public String alienOrder(String[] words) {
-        // Step 0: Create data structures and find all unique letters.
-        Map<Character, List<Character>> adjList = new HashMap<>();
-        Map<Character, Integer> indegrees = new HashMap<Character, Integer>();
+        if (words.length == 0) {
+            return "";
+        }
 
-        for (String word : words) {
+        Map<Character, List<Character>> graph = new HashMap<>();
+
+        Map<Character,Integer> indegrees =new HashMap<>();
+
+        for (String word: words) {
             for (char c : word.toCharArray()) {
                 indegrees.put(c, 0);
-                adjList.put(c, new ArrayList<>());
+                graph.put(c, new ArrayList<>());
             }
         }
 
-        // Find edges
         for (int i = 0; i < words.length - 1; i++) {
-            String word1 = words[i];
-            String word2 = words[i + 1];
+            String w1 = words[i];
+            String w2 = words[i + 1];
 
-            if (word1.length() > word2.length() && word1.startsWith(word2)) {
+            if (w1.length() > w2.length() && w1.startsWith(w2)) {
                 return "";
             }
-            for (int j = 0; j < Math.min(word1.length(), word2.length()); j++) {
-                if (word1.charAt(j) != word2.charAt(j)) {
-                    adjList.get(word1.charAt(j)).add(word2.charAt(j));
-                    indegrees.put(word2.charAt(j), indegrees.get(word2.charAt(j)) + 1);
+
+            for (int j = 0; j < Math.min(w1.length(), w2.length()); j++) {
+                char a = w1.charAt(j);
+                char b = w2.charAt(j);
+
+                if (a != b) {
+                    graph.get(a).add(b);
+                    indegrees.put(b, indegrees.getOrDefault(b, 0) + 1);
                     break;
                 }
             }
         }
-        StringBuilder sb = new StringBuilder();
-        Deque<Character> queue = new ArrayDeque();
 
-        System.out.println(indegrees);
-        for (Character c : indegrees.keySet()) {
-            if (indegrees.get(c).equals(0)) {
-                queue.offer(c);
+        Deque<Character> q = new ArrayDeque<>();
+
+        for (var entry : indegrees.entrySet()) {
+            if (entry.getValue() == 0) {
+                q.add(entry.getKey());
             }
         }
 
-        while (!queue.isEmpty()) {
-            Character c = queue.poll();
-            sb.append(c);
+        StringBuilder sortedOrder = new StringBuilder();
 
-            for (Character neighbor : adjList.get(c)) {
-                indegrees.put(neighbor, indegrees.get(neighbor) - 1);
-                if (indegrees.get(neighbor).equals(0)) {
-                    queue.offer(neighbor);
-                }
+        while (!q.isEmpty()) {
+            char cur = q.removeFirst();
+            sortedOrder.append(cur);
+
+            for (char nei : graph.getOrDefault(cur, new ArrayList<>())) {
+                indegrees.put(nei, indegrees.get(nei) - 1);
+
+                if (indegrees.get(nei) == 0) {
+                    q.addLast(nei);
+                } 
             }
         }
-        if (sb.length() < indegrees.size()) {
+
+        if (sortedOrder.length() != indegrees.size()) {
             return "";
         }
-        return sb.toString();
+
+        return sortedOrder.toString();
     }
 }
