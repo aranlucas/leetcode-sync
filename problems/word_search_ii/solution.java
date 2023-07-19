@@ -7,7 +7,7 @@ class Solution {
             trie.insert(word);
         }
 
-        List<String> result = new ArrayList();
+        List<String> result = new ArrayList<>();
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 boolean[][] visited = new boolean[board.length][board[0].length];
@@ -20,26 +20,21 @@ class Solution {
 
     public void dfs(
             int r, int c, char[][] board, TrieNode trie, boolean[][] visited, List<String> result) {
-        if (r < 0 || r >= board.length) {
+        if (r < 0 || r >= board.length || c < 0 || c >= board[0].length || visited[r][c]) {
             return;
         }
-        if (c < 0 || c >= board[0].length) {
-            return;
-        }
-        char ct = board[r][c];
 
-        if (visited[r][c]) {
-            return;
-        }
+        char ct = board[r][c];
 
         if (trie.nodes[ct - 'a'] == null) {
             return;
         }
         trie = trie.nodes[ct - 'a'];
 
-        if (trie.word != null && trie.isWord) { // found one
+        if (trie.isWord) {
             result.add(trie.word);
             trie.word = null;
+            trie.isWord = false;
         }
 
         visited[r][c] = true;
@@ -48,11 +43,12 @@ class Solution {
         dfs(r - 1, c, board, trie, visited, result);
         dfs(r, c + 1, board, trie, visited, result);
         dfs(r, c - 1, board, trie, visited, result);
+        
         visited[r][c] = false;
     }
 }
 
-public class TrieNode {
+class TrieNode {
     public String word;
     public boolean isWord = false;
     public TrieNode[] nodes = new TrieNode[26];
