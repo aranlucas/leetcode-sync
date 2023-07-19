@@ -21,7 +21,7 @@ class Solution {
                 q.addLast(i);
             }
         }
-        int result = 0, finishedCourses = 0;
+        int result = 0, finishedCourses = 0; 
 
         while (!q.isEmpty()) {
             finishedCourses += q.size();
