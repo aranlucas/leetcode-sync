@@ -15,7 +15,7 @@ class Solution {
             return backtrack(i + 1, sol, visited, n);
         }
 
-        for(int j = n; j > 0; j--) {
+        for (int j = n; j > 0; j--) {
             if (!visited[j] && (j == 1 || i + j < sol.length && sol[i + j] == 0)) {
                 sol[i] = j;
                 if (j != 1) {
@@ -27,7 +27,7 @@ class Solution {
                 if (backtrack(i + 1, sol, visited, n)) {
                     return true;
                 }
-                
+
                 sol[i] = 0;
 
                 if (j != 1) {

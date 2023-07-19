@@ -43,7 +43,7 @@ class Solution {
         dfs(r - 1, c, board, trie, visited, result);
         dfs(r, c + 1, board, trie, visited, result);
         dfs(r, c - 1, board, trie, visited, result);
-        
+
         visited[r][c] = false;
     }
 }

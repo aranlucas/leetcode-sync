@@ -6,9 +6,9 @@ class Solution {
 
         Map<Character, List<Character>> graph = new HashMap<>();
 
-        Map<Character,Integer> indegrees =new HashMap<>();
+        Map<Character, Integer> indegrees = new HashMap<>();
 
-        for (String word: words) {
+        for (String word : words) {
             for (char c : word.toCharArray()) {
                 indegrees.put(c, 0);
                 graph.put(c, new ArrayList<>());
@@ -54,7 +54,7 @@ class Solution {
 
                 if (indegrees.get(nei) == 0) {
                     q.addLast(nei);
-                } 
+                }
             }
         }
 

@@ -7,7 +7,7 @@ class Solution {
             graph.put(i, new ArrayList<>());
         }
 
-        for (int[] edge: prerequisites) {
+        for (int[] edge : prerequisites) {
             int dest = edge[0];
             int src = edge[1];
             graph.computeIfAbsent(src, k -> new ArrayList<>()).add(dest);
@@ -15,7 +15,6 @@ class Solution {
         }
 
         Deque<Integer> q = new ArrayDeque<>();
-
 
         for (int i = 0; i < indegrees.length; i++) {
             if (indegrees[i] == 0) {
