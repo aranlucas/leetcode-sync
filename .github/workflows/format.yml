@@ -11,6 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v2
         with:
+          distribution: 'correto'
           java-version: 17
       - uses: axel-op/googlejavaformat-action@v3
         with:
