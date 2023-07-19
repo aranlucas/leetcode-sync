@@ -1,23 +1,43 @@
+class State {
+    /**
+     * data object to keep the state info for each step:
+     */
+    public int x, y, distance, k;
+
+    public State(int x, int y, int distance, int k) {
+        this.x = x;
+        this.y = y;
+        this.distance = distance;
+        this.k = k;
+    }
+
+    @Override
+    public int hashCode() {
+        // needed when we put objects into any container class
+        return (this.x + 1) * (this.y + 1) * this.k;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        /**
+         * only (row, col, k) matters as the state info
+         */
+        if (!(other instanceof State)) {
+            return false;
+        }
+        State newState = (State) other;
+        return (this.x == newState.x) && (this.y == newState.y) && (this.k == newState.k);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d %d %d", this.x, this.y, this.k);
+    }
+}
+
 class Solution {
 
     int[][] DIRS = {{0 , 1}, {1 , 0}, {-1, 0}, {0,-1}};
-
-    record State(int x, int y, int distance, int k) {
-        @Override
-        public int hashCode() {
-            // needed when we put objects into any container class
-            return (this.x + 1) * (this.y + 1) * this.k;
-        }
-        
-        @Override
-        public boolean equals(Object other) {
-            if (!(other instanceof State)) {
-                return false;
-            }
-            State newState = (State) other;
-            return (this.x == newState.x) && (this.y == newState.y) && (this.k == newState.k);
-        }
-    }
 
     public int shortestPath(int[][] grid, int k) {
         int n = grid.length;
