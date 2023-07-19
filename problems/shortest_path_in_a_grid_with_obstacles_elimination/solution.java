@@ -1,4 +1,5 @@
 class Solution {
+
     int[][] DIRS = {{0 , 1}, {1 , 0}, {-1, 0}, {0,-1}};
 
     record State(int x, int y, int distance, int k) {
@@ -7,12 +8,9 @@ class Solution {
             // needed when we put objects into any container class
             return (this.x + 1) * (this.y + 1) * this.k;
         }
-
+        
         @Override
         public boolean equals(Object other) {
-            /**
-            * only (row, col, k) matters as the state info
-            */
             if (!(other instanceof State)) {
                 return false;
             }
