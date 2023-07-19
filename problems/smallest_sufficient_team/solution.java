@@ -19,7 +19,7 @@ class Solution {
 
         dp[0] = 0;
 
-        for (int skillsMask = 1; skillsMask < (1 <<m); skillsMask++) {
+        for (int skillsMask = 1; skillsMask < (1 << m); skillsMask++) {
             for (int i = 0; i < n; i++) {
                 int smallerSkillsMask = skillsMask & ~skillsMaskOfPerson[i];
                 if (smallerSkillsMask != skillsMask) {
@@ -31,7 +31,7 @@ class Solution {
             }
         }
         long answerMask = dp[(1 << m) - 1];
-        int ans[] = new int [Long.bitCount(answerMask)];
+        int ans[] = new int[Long.bitCount(answerMask)];
         int ptr = 0;
         for (int i = 0; i < n; i++) {
             if (((answerMask >> i) & 1) == 1) {

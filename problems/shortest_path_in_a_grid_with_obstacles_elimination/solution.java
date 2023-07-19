@@ -37,7 +37,7 @@ class State {
 
 class Solution {
 
-    int[][] DIRS = {{0 , 1}, {1 , 0}, {-1, 0}, {0,-1}};
+    int[][] DIRS = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
 
     public int shortestPath(int[][] grid, int k) {
         int n = grid.length;
@@ -62,8 +62,8 @@ class Solution {
             if (cur.x == n - 1 && cur.y == m - 1) {
                 return cur.distance;
             }
- 
-            for (int[] dir: DIRS)  {
+
+            for (int[] dir : DIRS) {
                 int dx = cur.x + dir[0];
                 int dy = cur.y + dir[1];
 

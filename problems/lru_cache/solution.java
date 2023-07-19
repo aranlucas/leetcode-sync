@@ -9,6 +9,7 @@ class DLinkedList {
         this.val = val;
     }
 }
+
 class LRUCache {
     DLinkedList head;
     DLinkedList tail;
@@ -16,14 +17,14 @@ class LRUCache {
     Map<Integer, DLinkedList> map;
 
     public LRUCache(int capacity) {
-      head = new DLinkedList(-1, -1);
-      tail = new DLinkedList(-1, -1);
-      head.next = tail;
-      tail.prev = head;
-      this.capacity = capacity;
-      map = new HashMap<>();
+        head = new DLinkedList(-1, -1);
+        tail = new DLinkedList(-1, -1);
+        head.next = tail;
+        tail.prev = head;
+        this.capacity = capacity;
+        map = new HashMap<>();
     }
-    
+
     public int get(int key) {
         if (!map.containsKey(key)) {
             return -1;
@@ -34,7 +35,7 @@ class LRUCache {
         add(node);
         return node.val;
     }
-    
+
     public void put(int key, int value) {
         if (map.containsKey(key)) {
             var node = map.get(key);

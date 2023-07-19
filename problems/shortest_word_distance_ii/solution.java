@@ -10,7 +10,7 @@ class WordDistance {
             locations.put(wordsDict[i], loc);
         }
     }
-    
+
     public int shortest(String word1, String word2) {
         List<Integer> loc1 = locations.get(word1);
         List<Integer> loc2 = locations.get(word2);

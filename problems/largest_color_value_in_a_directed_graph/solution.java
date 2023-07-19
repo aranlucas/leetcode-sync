@@ -1,5 +1,5 @@
 class Solution {
-  public int largestPathValue(String colors, int[][] edges) {
+    public int largestPathValue(String colors, int[][] edges) {
         int n = colors.length();
         Map<Integer, List<Integer>> adj = new HashMap<>();
         int[] indegree = new int[n];

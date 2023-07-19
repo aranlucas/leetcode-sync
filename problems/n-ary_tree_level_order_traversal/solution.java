@@ -35,7 +35,7 @@ class Solution {
                 Node cur = q.removeFirst();
                 level.add(cur.val);
 
-                for (Node nei: cur.children) {
+                for (Node nei : cur.children) {
                     if (nei == null) {
                         continue;
                     }

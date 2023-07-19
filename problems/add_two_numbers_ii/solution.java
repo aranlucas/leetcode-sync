@@ -47,6 +47,6 @@ class Solution {
             cur.next = yes;
             cur = cur.next;
         }
-        return carry == 0 ? ans.next: ans;
+        return carry == 0 ? ans.next : ans;
     }
 }

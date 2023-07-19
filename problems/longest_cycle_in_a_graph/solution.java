@@ -4,7 +4,7 @@ class Solution {
         boolean[] visit = new boolean[n];
         int[] indegree = new int[n];
 
-        for (int edge: edges) {
+        for (int edge : edges) {
             if (edge != -1) {
                 indegree[edge]++;
             }

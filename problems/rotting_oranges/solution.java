@@ -1,5 +1,6 @@
 class Solution {
     int[][] DIRS = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+
     public int orangesRotting(int[][] grid) {
         int freshOranges = 0;
         int n = grid.length;
@@ -11,7 +12,7 @@ class Solution {
                 if (grid[i][j] == 1) {
                     freshOranges++;
                 } else if (grid[i][j] == 2) {
-                    q.addLast(new int[] { i, j});
+                    q.addLast(new int[] {i, j});
                 }
             }
         }
@@ -24,8 +25,8 @@ class Solution {
 
             for (int i = 0; i < size; i++) {
                 int[] cur = q.removeFirst();
-                
-                for (int[] dir: DIRS) {
+
+                for (int[] dir : DIRS) {
                     int dx = cur[0] + dir[0];
                     int dy = cur[1] + dir[1];
 
