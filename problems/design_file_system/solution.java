@@ -1,26 +1,67 @@
 class FileSystem {
-    Map<String, Integer> map;
+    Trie trie;
 
     public FileSystem() {
-        map = new HashMap<>();
-        map.put("", -1);
+        trie = new Trie();
+    }
+    
+    public boolean createPath(String path, int value) {
+        return trie.addPath(path, value);
+    }
+    
+    public int get(String path) {
+        return trie.findPath(path);
+    }
+}
+
+class TrieNode {
+    int value = -1;
+    Map<String, TrieNode> children = new HashMap<>();
+}
+
+class Trie {
+    TrieNode root;
+
+    public Trie() {
+        root = new TrieNode();
     }
 
-    public boolean createPath(String path, int value) {
-        if (map.containsKey(path)) {
-            return false;
-        }
-        String parentPath = path.substring(0, path.lastIndexOf("/"));
-        if (!map.containsKey(parentPath)) {
-            return false;
-        }
+    public boolean addPath(String path, int value) {
+        String[] components = path.split("/");
 
-        map.put(path, value);
+        TrieNode cur = root;
+        for (int i = 1; i < components.length; i++) {
+            String p = components[i];
+
+            if (!cur.children.containsKey(p)) {
+                if (i == components.length -1) {
+                    cur.children.put(p, new TrieNode());
+                } else {
+                    return false;
+                }
+            }
+            cur = cur.children.get(p);
+        }
+        if (cur.value != -1) {
+            return false;
+        }
+        cur.value = value;
         return true;
     }
+    
+    public int findPath(String paths) {
+        String[] components = paths.split("/");
 
-    public int get(String path) {
-        return map.getOrDefault(path, -1);
+        TrieNode cur = root;
+        for (int i = 1; i < components.length; i++) {
+            String c = components[i];
+            if (!cur.children.containsKey(c)) {
+                return -1;
+            }
+            cur = cur.children.get(c);
+        }
+
+        return cur.value;
     }
 }
 
