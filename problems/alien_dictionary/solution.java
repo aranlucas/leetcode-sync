@@ -1,35 +1,29 @@
 class Solution {
     public String alienOrder(String[] words) {
-        if (words.length == 0) {
-            return "";
-        }
-
         Map<Character, List<Character>> graph = new HashMap<>();
-
         Map<Character, Integer> indegrees = new HashMap<>();
 
-        for (String word : words) {
-            for (char c : word.toCharArray()) {
+        for (int i = 0; i < words.length; i++) {
+            for (char c: words[i].toCharArray()) {
                 indegrees.put(c, 0);
                 graph.put(c, new ArrayList<>());
             }
         }
 
         for (int i = 0; i < words.length - 1; i++) {
-            String w1 = words[i];
-            String w2 = words[i + 1];
+            String word1 = words[i];
+            String word2 = words[i + 1];
 
-            if (w1.length() > w2.length() && w1.startsWith(w2)) {
-                return "";
-            }
+            for (int j = 0; j < Math.min(word1.length(), word2.length()); j++) {
+                char a = word1.charAt(j);
+                char b = word2.charAt(j);
 
-            for (int j = 0; j < Math.min(w1.length(), w2.length()); j++) {
-                char a = w1.charAt(j);
-                char b = w2.charAt(j);
-
+                if (word1.length() > word2.length() && word1.startsWith(word2)) {
+                    return "";
+                }
                 if (a != b) {
                     graph.get(a).add(b);
-                    indegrees.put(b, indegrees.getOrDefault(b, 0) + 1);
+                    indegrees.put(b, indegrees.get(b) + 1);
                     break;
                 }
             }
@@ -39,17 +33,14 @@ class Solution {
 
         for (var entry : indegrees.entrySet()) {
             if (entry.getValue() == 0) {
-                q.add(entry.getKey());
+                q.addLast(entry.getKey());
             }
         }
-
-        StringBuilder sortedOrder = new StringBuilder();
-
+        StringBuilder sb = new StringBuilder();
         while (!q.isEmpty()) {
-            char cur = q.removeFirst();
-            sortedOrder.append(cur);
-
-            for (char nei : graph.getOrDefault(cur, new ArrayList<>())) {
+            Character cur = q.removeFirst();
+            sb.append(cur);
+            for (Character nei : graph.getOrDefault(cur, new ArrayList<>())) {
                 indegrees.put(nei, indegrees.get(nei) - 1);
 
                 if (indegrees.get(nei) == 0) {
@@ -57,11 +48,10 @@ class Solution {
                 }
             }
         }
-
-        if (sortedOrder.length() != indegrees.size()) {
+        if (sb.length() != indegrees.size()) {
             return "";
         }
-
-        return sortedOrder.toString();
+        return sb.toString();
     }
+
 }
