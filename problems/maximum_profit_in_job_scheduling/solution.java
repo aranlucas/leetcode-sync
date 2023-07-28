@@ -1,41 +1,41 @@
 class Solution {
-    int[] memo;
-
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
 
-        List<int[]> jobs = new ArrayList<>();
-        memo = new int[startTime.length];
-        Arrays.fill(memo, -1);
+        int n = profit.length;
+        List<int[]> jobsWithProfit = new ArrayList<>();
 
-        for (int i = 0; i < startTime.length; i++) {
-            jobs.add(new int[] {startTime[i], endTime[i], profit[i]});
+
+        for (int i = 0; i < n; i++) {
+            jobsWithProfit.add(new int[] {startTime[i], endTime[i], profit[i]});
         }
 
-        // Arrays.sort(list, (a, b)-> a[0]- b[0]);
-        jobs.sort((a, b) -> a[0] - b[0]);
-
-        return findMaxProfit(jobs, 0);
+        Collections.sort(jobsWithProfit, (a, b) -> a[0] - b[0]);
+        Integer[] memo = new Integer[n];
+        return solve(jobsWithProfit, 0, memo);
     }
 
-    private int findMaxProfit(List<int[]> jobs, int position) {
-        // 0 profit if we have already iterated over all the jobs
-        if (position >= jobs.size()) {
+
+    public int solve(List<int[]> jobsWithProfit, int curJobIndex, Integer[] memo) {
+        if (curJobIndex == jobsWithProfit.size()) {
             return 0;
         }
 
-        if (memo[position] != -1) {
-            return memo[position];
+        if (memo[curJobIndex] != null) {
+            return memo[curJobIndex];
         }
 
-        int k = position + 1;
+        int skipJob = solve(jobsWithProfit, curJobIndex + 1, memo);
 
-        while (k < jobs.size() && jobs.get(k)[0] < jobs.get(position)[1]) {
-            k++;
+        int[] curJob = jobsWithProfit.get(curJobIndex);
+
+        int takeJob = curJob[2];
+        for (int nextJob = curJobIndex + 1; nextJob < jobsWithProfit.size(); nextJob++) {
+            if (curJob[1] <= jobsWithProfit.get(nextJob)[0]) {
+                takeJob += solve(jobsWithProfit, nextJob, memo);
+                break;
+            }
         }
 
-        int include = jobs.get(position)[2] + findMaxProfit(jobs, k);
-        int exclude = findMaxProfit(jobs, position + 1);
-
-        return memo[position] = Math.max(include, exclude);
+        return memo[curJobIndex] = Math.max(skipJob, takeJob);
     }
 }
