@@ -14,36 +14,21 @@
  * }
  */
 class Solution {
+    int max = Integer.MIN_VALUE;
     public int maxPathSum(TreeNode root) {
+        dfs(root);
+
+        return max;
+    }
+
+    public int dfs(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        int result = Integer.MIN_VALUE;
 
-        Deque<TreeNode> postorder = new LinkedList<>();
-        Deque<TreeNode> stack = new LinkedList<>();
-        stack.push(root);
-
-        while (!stack.isEmpty()) {
-            TreeNode curr = stack.pop();
-            postorder.push(curr);
-            if (curr.right != null) {
-                stack.push(curr.right);
-            }
-            if (curr.left != null) {
-                stack.push(curr.left);
-            }
-        }
-
-        Map<TreeNode, Integer> maxRootPath = new HashMap<>();
-
-        for (TreeNode node : postorder) {
-            int left = Math.max(maxRootPath.getOrDefault(node.left, 0), 0);
-            int right = Math.max(maxRootPath.getOrDefault(node.right, 0), 0);
-            maxRootPath.put(node, Math.max(left, right) + node.val);
-            result = Math.max(left + right + node.val, result);
-        }
-
-        return result;
+        int left = Math.max(dfs(root.left), 0);
+        int right = Math.max(dfs(root.right), 0); 
+        max = Math.max(root.val + left + right, max);
+        return Math.max(left + root.val, right + root.val);
     }
 }
