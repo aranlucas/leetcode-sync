@@ -1,14 +1,13 @@
 class Solution {
-    int[][] DIRS = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
-
+    int[][] DIRS = {{0, 1} , {1,0}, {-1, 0}, {0, -1}};
     public int shortestDistance(int[][] grid) {
-
+        
         int buildingCount = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
                 if (grid[i][j] == 1) {
                     buildingCount++;
-                }
+                } 
             }
         }
 
@@ -37,7 +36,7 @@ class Solution {
         int buildingsFound = 0;
         boolean[][] vis = new boolean[n][m];
 
-        q.addLast(new int[] {x, y});
+        q.addLast(new int[] { x, y });
         vis[x][y] = true;
         int level = 0;
         int pathDistance = 0;
@@ -52,7 +51,7 @@ class Solution {
                     buildingsFound++;
                     continue;
                 }
-                for (int[] dir : DIRS) {
+                for (int[] dir: DIRS) {
                     int dx = cur[0] + dir[0];
                     int dy = cur[1] + dir[1];
 
