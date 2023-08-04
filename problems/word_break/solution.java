@@ -11,8 +11,8 @@ class Solution {
         if (memo[i] != null) {
             return memo[i];
         }
-
-        for (String word : wordDict) {
+        
+        for (String word: wordDict) {
             // Handle out of bounds case
             if (i - word.length() + 1 < 0) {
                 continue;
@@ -28,5 +28,6 @@ class Solution {
         memo[i] = false;
 
         return false;
+
     }
 }
