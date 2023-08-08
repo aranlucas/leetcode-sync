@@ -1,6 +1,7 @@
 class Solution {
 
     int[][] DIRS = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
+
     public int swimInWater(int[][] grid) {
 
         int n = grid.length;
@@ -30,11 +31,11 @@ class Solution {
 
         while (!q.isEmpty()) {
             int[] cur = q.removeFirst();
-            if (cur[0] == n - 1 && cur[1] == n -1) {
+            if (cur[0] == n - 1 && cur[1] == n - 1) {
                 return true;
             }
 
-            for (int[] dir: DIRS) {
+            for (int[] dir : DIRS) {
                 int dx = cur[0] + dir[0];
                 int dy = cur[1] + dir[1];
                 if (0 <= dx && dx < n && 0 <= dy && dy < n) {
@@ -43,7 +44,7 @@ class Solution {
                     }
                     if (grid[dx][dy] <= time) {
                         seen[dx][dy] = true;
-                        q.addLast(new int[] { dx, dy});
+                        q.addLast(new int[] {dx, dy});
                     }
                 }
             }

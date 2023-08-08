@@ -8,8 +8,8 @@ class Solution {
         return answer;
     }
 
-
-    private void backtrack(int start, int n, int k, List<Integer> current, List<List<Integer>> answer) {
+    private void backtrack(
+            int start, int n, int k, List<Integer> current, List<List<Integer>> answer) {
         if (current.size() == k) {
             answer.add(new ArrayList<>(current));
             return;

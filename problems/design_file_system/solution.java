@@ -4,11 +4,11 @@ class FileSystem {
     public FileSystem() {
         trie = new Trie();
     }
-    
+
     public boolean createPath(String path, int value) {
         return trie.addPath(path, value);
     }
-    
+
     public int get(String path) {
         return trie.findPath(path);
     }
@@ -34,7 +34,7 @@ class Trie {
             String p = components[i];
 
             if (!cur.children.containsKey(p)) {
-                if (i == components.length -1) {
+                if (i == components.length - 1) {
                     cur.children.put(p, new TrieNode());
                 } else {
                     return false;
@@ -48,7 +48,7 @@ class Trie {
         cur.value = value;
         return true;
     }
-    
+
     public int findPath(String paths) {
         String[] components = paths.split("/");
 

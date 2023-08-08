@@ -1,11 +1,11 @@
 class Solution {
-    int[][] DIRS = {{0,1}, {1, 0}, {-1, 0}, {0, -1}};
+    int[][] DIRS = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+
     public int getFood(char[][] grid) {
         int n = grid.length;
         int m = grid[0].length;
-        
-        int[] start = findStart(grid);
 
+        int[] start = findStart(grid);
 
         Deque<int[]> q = new ArrayDeque<>();
         q.add(start);
@@ -23,7 +23,7 @@ class Solution {
                     return length;
                 }
 
-                for (int[] dir: DIRS) {
+                for (int[] dir : DIRS) {
                     int dx = cur[0] + dir[0];
                     int dy = cur[1] + dir[1];
 
@@ -49,7 +49,7 @@ class Solution {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
                 if (grid[i][j] == '*') {
-                    return new int[] { i, j};
+                    return new int[] {i, j};
                 }
             }
         }

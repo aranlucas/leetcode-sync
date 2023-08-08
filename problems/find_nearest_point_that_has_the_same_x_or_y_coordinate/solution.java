@@ -1,7 +1,6 @@
 class Solution {
     public int nearestValidPoint(int x, int y, int[][] points) {
 
-
         int distance = Integer.MAX_VALUE;
         int answer = -1;
         for (int i = 0; i < points.length; i++) {

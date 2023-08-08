@@ -1,5 +1,6 @@
 class Solution {
     int[][] KNIGHT_MOVES = {{2, -1}, {2, 1}, {1, 2}, {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2}, {1, -2}};
+
     public double knightProbability(int n, int k, int row, int column) {
         Double[][][] dp = new Double[k + 1][n][n];
 
@@ -18,7 +19,7 @@ class Solution {
         }
 
         double prob = 0;
-        for (int[] dir: KNIGHT_MOVES) {
+        for (int[] dir : KNIGHT_MOVES) {
             int dx = row + dir[0];
             int dy = column + dir[1];
             if (0 <= dx && dx < n && 0 <= dy && dy < n) {

@@ -4,7 +4,6 @@ class Solution {
         int n = profit.length;
         List<int[]> jobsWithProfit = new ArrayList<>();
 
-
         for (int i = 0; i < n; i++) {
             jobsWithProfit.add(new int[] {startTime[i], endTime[i], profit[i]});
         }
@@ -13,7 +12,6 @@ class Solution {
         Integer[] memo = new Integer[n];
         return solve(jobsWithProfit, 0, memo);
     }
-
 
     public int solve(List<int[]> jobsWithProfit, int curJobIndex, Integer[] memo) {
         if (curJobIndex == jobsWithProfit.size()) {

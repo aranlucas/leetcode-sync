@@ -33,8 +33,6 @@ class Solution {
             return solve(s1, s2, i + 1, j + 1, memo);
         }
 
-
-
         int moveS1 = s1.charAt(i) + solve(s1, s2, i + 1, j, memo);
         int moveS2 = s2.charAt(j) + solve(s1, s2, i, j + 1, memo);
         int moveBoth = s1.charAt(i) + s2.charAt(j) + solve(s1, s2, i + 1, j + 1, memo);

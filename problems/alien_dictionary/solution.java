@@ -4,7 +4,7 @@ class Solution {
         Map<Character, Integer> indegrees = new HashMap<>();
 
         for (int i = 0; i < words.length; i++) {
-            for (char c: words[i].toCharArray()) {
+            for (char c : words[i].toCharArray()) {
                 indegrees.put(c, 0);
                 graph.put(c, new ArrayList<>());
             }
@@ -53,5 +53,4 @@ class Solution {
         }
         return sb.toString();
     }
-
 }

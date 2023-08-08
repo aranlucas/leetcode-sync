@@ -1,16 +1,16 @@
 class Solution {
-    int[][] DIRS = {{0,1}, {1, 0}, {-1, 0}, {0, -1}};
+    int[][] DIRS = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
+
     public int longestIncreasingPath(int[][] matrix) {
         int n = matrix.length;
         int m = matrix[0].length;
-
 
         Integer[][] memo = new Integer[n][m];
         int answer = 0;
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                answer = Math.max(dfs(i , j, matrix, memo), answer);
+                answer = Math.max(dfs(i, j, matrix, memo), answer);
             }
         }
 
@@ -24,7 +24,7 @@ class Solution {
         }
 
         int answer = 1;
-        for (int[] dir: DIRS) {
+        for (int[] dir : DIRS) {
             int dx = x + dir[0];
             int dy = y + dir[1];
 
@@ -34,7 +34,7 @@ class Solution {
                 }
             }
         }
-        
+
         return memo[x][y] = answer;
     }
 }

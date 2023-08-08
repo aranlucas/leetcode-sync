@@ -4,7 +4,6 @@ class Solution {
         return solve(s, 0, s.length() - 1, dp);
     }
 
-
     public int solve(String s, int i, int j, Integer[][] memo) {
         if (i == j) {
             return 1;
@@ -13,7 +12,7 @@ class Solution {
         if (memo[i][j] != null) {
             return memo[i][j];
         }
-        
+
         int ans = Integer.MAX_VALUE;
 
         for (int k = i; k < j; k++) {

@@ -1,11 +1,11 @@
 class Solution {
-    Map<Character, Integer> precedence = Map.of(
-        '+', 1,
-        '-', 1,
-        '*', 2,
-        '/', 2
-    );
-    
+    Map<Character, Integer> precedence =
+            Map.of(
+                    '+', 1,
+                    '-', 1,
+                    '*', 2,
+                    '/', 2);
+
     public String infixToPostfix(String infix) {
         StringBuilder output = new StringBuilder();
         Stack<Character> operatorStack = new Stack<>();
@@ -20,7 +20,7 @@ class Solution {
             if (Character.isDigit(c)) {
                 // If the current character is a digit, we should check for multi-digit numbers
                 int num = c - '0';
-                while (i < infix.length() - 1 && Character.isDigit(infix.charAt(i+1))) {
+                while (i < infix.length() - 1 && Character.isDigit(infix.charAt(i + 1))) {
                     num = num * 10 + (infix.charAt(i + 1) - '0');
                     i++;
                 }
@@ -35,7 +35,9 @@ class Solution {
                     operatorStack.pop();
                 }
             } else {
-                while (!operatorStack.isEmpty() && precedence.getOrDefault(c, 0) <= precedence.getOrDefault(operatorStack.peek(), 0)) {
+                while (!operatorStack.isEmpty()
+                        && precedence.getOrDefault(c, 0)
+                                <= precedence.getOrDefault(operatorStack.peek(), 0)) {
                     char op = operatorStack.pop();
                     output.append(op).append(" ");
                 }
@@ -51,7 +53,7 @@ class Solution {
 
     public int evaluate(String post) {
         Stack<Integer> operandStack = new Stack<>();
-     
+
         String[] split = post.split(" ");
         for (String token : split) {
             System.out.println(operandStack);
@@ -61,24 +63,25 @@ class Solution {
                 int b = operandStack.pop();
                 int a = operandStack.pop();
                 switch (token.charAt(0)) {
-                case '+': 
-                    operandStack.push(a + b);
-                    break;
-                case '-':
-                    operandStack.push(a - b);
-                    break;
-                case '*': 
-                    operandStack.push(a * b);
-                    break;
-                case '/': 
-                    operandStack.push(a / b);
-                    break;
+                    case '+':
+                        operandStack.push(a + b);
+                        break;
+                    case '-':
+                        operandStack.push(a - b);
+                        break;
+                    case '*':
+                        operandStack.push(a * b);
+                        break;
+                    case '/':
+                        operandStack.push(a / b);
+                        break;
                 }
             }
         }
 
         return operandStack.pop();
     }
+
     public int calculate(String s) {
         String postfix = infixToPostfix(s);
         return evaluate(postfix);

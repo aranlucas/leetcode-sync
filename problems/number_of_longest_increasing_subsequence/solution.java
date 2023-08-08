@@ -21,18 +21,18 @@ class Solution {
                 }
             }
         }
-        
+
         int longest = 0;
-        for (int c: dp) {
+        for (int c : dp) {
             longest = Math.max(longest, c);
         }
-        
+
         int result = 0;
         for (int i = 0; i < nums.length; i++) {
             if (dp[i] == longest) {
                 result += count[i];
             }
-        }   
+        }
 
         return result;
     }

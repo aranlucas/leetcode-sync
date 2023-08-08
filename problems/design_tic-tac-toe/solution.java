@@ -6,16 +6,14 @@ class TicTacToe {
         this.board = new int[n][n];
         this.n = n;
     }
-    
+
     public int move(int row, int col, int player) {
         board[row][col] = player;
 
-        if (
-            checkRow(row, player) || 
-            checkColumn(col, player) ||
-            checkDiagonal(player) || 
-            checkAntiDiagonal(player)       
-        ) {
+        if (checkRow(row, player)
+                || checkColumn(col, player)
+                || checkDiagonal(player)
+                || checkAntiDiagonal(player)) {
             return player;
         }
 
@@ -30,7 +28,7 @@ class TicTacToe {
         }
         return true;
     }
-    
+
     private boolean checkAntiDiagonal(int player) {
         for (int row = 0; row < n; row++) {
             if (board[row][n - row - 1] != player) {
@@ -38,7 +36,7 @@ class TicTacToe {
             }
         }
         return true;
-    }  
+    }
 
     private boolean checkColumn(int col, int player) {
         for (int row = 0; row < n; row++) {

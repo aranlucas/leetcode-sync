@@ -1,5 +1,6 @@
 class Solution {
     int answer = 0;
+
     public int maximalPathQuality(int[] values, int[][] edges, int maxTime) {
         Map<Integer, Map<Integer, Integer>> graph = new HashMap<>();
 
@@ -16,7 +17,13 @@ class Solution {
         return answer;
     }
 
-    public void dfs(int node, Map<Integer, Map<Integer, Integer>> graph, int[] values, int[] seen, int maxTime, int quality) {
+    public void dfs(
+            int node,
+            Map<Integer, Map<Integer, Integer>> graph,
+            int[] values,
+            int[] seen,
+            int maxTime,
+            int quality) {
         seen[node]++;
 
         if (seen[node] == 1) {

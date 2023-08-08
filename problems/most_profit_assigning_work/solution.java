@@ -9,13 +9,13 @@ class Solution {
             jobs.add(new Job(difficulty[i], profit[i]));
         }
 
-        Collections.sort(jobs, (a , b) -> a.difficulty() - b.difficulty());
+        Collections.sort(jobs, (a, b) -> a.difficulty() - b.difficulty());
         Arrays.sort(worker);
 
-        int ans = 0; 
-        int i = 0; 
+        int ans = 0;
+        int i = 0;
         int best = 0;
-        for (int skill: worker) {
+        for (int skill : worker) {
             while (i < n && skill >= jobs.get(i).difficulty()) {
                 best = Math.max(best, jobs.get(i).profit());
                 i++;

@@ -1,6 +1,6 @@
 class Solution {
 
-    int[][] DIRS = {{0,1}, {1,0}, {-1,0}, {0,-1}};
+    int[][] DIRS = {{0, 1}, {1, 0}, {-1, 0}, {0, -1}};
     int GATE = 0;
     int EMPTY = Integer.MAX_VALUE;
     int WALL = -1;
@@ -15,7 +15,7 @@ class Solution {
             for (int j = 0; j < m; j++) {
                 if (rooms[i][j] == GATE) {
                     // Begin search from all gates
-                    q.add(new int[] { i, j});
+                    q.add(new int[] {i, j});
                 }
             }
         }
@@ -27,7 +27,7 @@ class Solution {
             for (int k = 0; k < size; k++) {
                 int[] cur = q.pop();
 
-                for (int[] dir: DIRS) {
+                for (int[] dir : DIRS) {
                     int dx = cur[0] + dir[0];
                     int dy = cur[1] + dir[1];
 

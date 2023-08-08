@@ -1,16 +1,5 @@
 class Solution {
-    String[] KEYBOARD = {
-        "", 
-        "", 
-        "abc", 
-        "def", 
-        "ghi", 
-        "jkl", 
-        "mno", 
-        "pqrs", 
-        "tuv", 
-        "wxyz"
-    };
+    String[] KEYBOARD = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
 
     public List<String> letterCombinations(String digits) {
         if (digits.length() == 0) {
@@ -30,7 +19,7 @@ class Solution {
 
         int c = digits.charAt(index) - '0';
 
-        for (char candidate: KEYBOARD[c].toCharArray()) {
+        for (char candidate : KEYBOARD[c].toCharArray()) {
             current.append(candidate);
             backtrack(index + 1, digits, current, result);
             current.deleteCharAt(current.length() - 1);

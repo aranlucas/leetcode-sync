@@ -1,6 +1,6 @@
 class Solution {
     public int[] asteroidCollision(int[] asteroids) {
-        
+
         Stack<Integer> stack = new Stack<>();
         for (int i = 0; i < asteroids.length; i++) {
 
@@ -14,10 +14,10 @@ class Solution {
                 while (!stack.isEmpty() && stack.peek() > 0 && stack.peek() < -asteroid) {
                     stack.pop();
                 }
-                
+
                 if (stack.isEmpty() || stack.peek() < 0) {
                     stack.push(asteroid);
-                } 
+                }
                 if (stack.peek() == -asteroid) {
                     // Pop if same but negative
                     stack.pop();

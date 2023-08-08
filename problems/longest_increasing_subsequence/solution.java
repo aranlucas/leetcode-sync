@@ -16,12 +16,12 @@ class Solution {
                 }
             }
         }
-        
+
         int longest = 0;
-        for (int c: dp) {
+        for (int c : dp) {
             longest = Math.max(longest, c);
         }
-        
+
         System.out.println(Arrays.toString(dp));
         System.out.println(Arrays.toString(count));
         return longest;
